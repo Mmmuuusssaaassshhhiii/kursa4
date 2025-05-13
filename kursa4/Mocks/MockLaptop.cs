@@ -44,7 +44,33 @@ public class MockLaptop : IAllLaptops
                     ImageUrl = "",
                     BatteryWh = 90,
                     OS = "без ОС",
-                }
+                },
+                new Laptop
+                {
+                    Brand = _laptopsBrand.allBrands.First(),
+                    Model = "ROG Strix SCAR 18 2025 G835LW-SA091 ",
+                    CPU = _laptopsCpu.AllCPUs.First(),
+                    GPU = _laptopsGpu.AllGPUs.First(),
+                    RAM = _laptopsRam.AllRams.First(),
+                    Storage = _laptopsStorage.AllStorages.First(),
+                    Category = _laptopsCategory.AllCategories.First(),
+                    ScreenSize = 18,
+                    Resolution = "2560 x 1600",
+                    RefreshRate = 240,
+                    KeyboardBackLight = true,
+                    HasWebcam = true,
+                    Weight = 3480,
+                    Width = 399,
+                    Height = 298,
+                    Depth = 32,
+                    Price = 12020,
+                    Description = "Машина, а не ноутбук",
+                    ReleaseYear = 2025,
+                    StockQuantity = 15,
+                    ImageUrl = "",
+                    BatteryWh = 90,
+                    OS = "без ОС",
+                    }
             };
         }
     }
