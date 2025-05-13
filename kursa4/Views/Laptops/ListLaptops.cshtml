@@ -1,5 +1,5 @@
-@using kursa4.Models
-@model IEnumerable<Laptop>
+@using kursa4.ViewModels
+@model LaptopsListViewModel
 
 @{
     ViewData["Title"] = "ListLaptops";
@@ -11,9 +11,10 @@
     <title>ListLaptops</title>
 </head>
 <body>
-<h2>Все ноутбуки</h2>
+<h1>Все ноутбуки</h1>
+<h3>@Model.currCategory</h3>
 @{
-    foreach (var laptop in Model)
+    foreach (var laptop in Model.allLaptops)
     {
         <div>
             <h2>Модель: @laptop.Model</h2>

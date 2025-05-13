@@ -1,4 +1,5 @@
 using kursa4.Interfaces;
+using kursa4.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace kursa4.Controllers;
@@ -32,7 +33,9 @@ public class LaptopsController : Controller
 
     public ViewResult ListLaptops()
     {
-        var laptops = _allLaptops.Laptops;
-        return View(laptops);
+       LaptopsListViewModel obj = new LaptopsListViewModel();
+       obj.allLaptops = _allLaptops.Laptops;
+       obj.currCategory = "Ноутбуки";
+       return View(obj);
     }
 }
