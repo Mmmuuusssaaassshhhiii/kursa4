@@ -1,20 +1,8 @@
 {
   "Files": [
     {
-      "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\kursa4.bundle.scp.css",
-      "PackagePath": "staticwebassets\\kursa4.ebff5gmfkj.bundle.scp.css"
-    },
-    {
-      "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\css\\site.css",
-      "PackagePath": "staticwebassets\\css\\site.css"
-    },
-    {
       "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
-      "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
       "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\lib\\bootstrap\\LICENSE",

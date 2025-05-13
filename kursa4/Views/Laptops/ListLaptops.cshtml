@@ -1,0 +1,27 @@
+@using kursa4.Models
+@model IEnumerable<Laptop>
+
+@{
+    ViewData["Title"] = "ListLaptops";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>ListLaptops</title>
+</head>
+<body>
+<h2>Все ноутбуки</h2>
+@{
+    foreach (var laptop in Model)
+    {
+        <div>
+            <h2>Модель: @laptop.Model</h2>
+            <p>Цена: @laptop.Price.ToString("c")</p>
+        </div>
+    }
+}
+</body>
+</html>
+
+
