@@ -32,7 +32,8 @@ public class LaptopsController : Controller
     }
 
     public ViewResult ListLaptops()
-    {
+    { 
+        ViewBag.Title = "Страница с ноутбуками";
        LaptopsListViewModel obj = new LaptopsListViewModel();
        obj.allLaptops = _allLaptops.Laptops;
        obj.currCategory = "Ноутбуки";

@@ -1,17 +1,4 @@
-@using kursa4.ViewModels
-@model LaptopsListViewModel
-
-@{
-    ViewData["Title"] = "ListLaptops";
-}
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width"/>
-    <title>ListLaptops</title>
-</head>
-<body>
-<h1>Все ноутбуки</h1>
+    <h1>Все ноутбуки</h1>
 <h3>@Model.currCategory</h3>
 @{
     foreach (var laptop in Model.allLaptops)
@@ -22,7 +9,3 @@
         </div>
     }
 }
-</body>
-</html>
-
-

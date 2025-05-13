@@ -31,3 +31,15 @@ build_property.EnableCodeStyleSeverity =
 [A:/универ/kursa4/kursa4/kursa4/Views/Laptops/ListLaptops.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFwdG9wc1xMaXN0TGFwdG9wcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[A:/универ/kursa4/kursa4/kursa4/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[A:/универ/kursa4/kursa4/kursa4/Views/Shared/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[A:/универ/kursa4/kursa4/kursa4/Views/Shared/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
