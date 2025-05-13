@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\kursa4.props" />
+</Project>
