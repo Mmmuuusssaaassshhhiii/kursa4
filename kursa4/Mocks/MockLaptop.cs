@@ -47,7 +47,6 @@ public class MockLaptop : IAllLaptops
                 }
             };
         }
-        set => throw new NotImplementedException();
     }
 
     public Laptop GetLaptop(int carId)

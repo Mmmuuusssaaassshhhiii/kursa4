@@ -4,6 +4,6 @@ namespace kursa4.Interfaces;
 
 public interface IAllLaptops
 {
-    IEnumerable<Laptop> Laptops { get; set; }
+    IEnumerable<Laptop> Laptops { get; }
     Laptop GetLaptop(int carId);
 }
