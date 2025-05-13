@@ -30,14 +30,12 @@ public class Laptop
     public string OS { get; set; }
     
     [Range(0, 1000)]
-    public int Battery { get; set; }
+    public int BatteryWh { get; set; }
     
     [Range(0, 50)]
     public float ScreenSize { get; set; }
     
     public int RefreshRate { get; set; }
-    public string PanelType { get; set; }
-    public string Coating { get; set; }
     public string Resolution { get; set; }
     
     [Range(0, 10)]
@@ -51,13 +49,11 @@ public class Laptop
     public bool HasWebcam { get; set; }
     
     [DataType(DataType.Currency)]
-    public decimal Price { get; set; }
+    public float Price { get; set; }
     
     public string ImageUrl { get; set; }
     public int StockQuantity { get; set; }
-    
-    [DataType(DataType.Date)]
-    public DateTime ReleaseYear { get; set; }
+    public int ReleaseYear { get; set; }
     
     public string Description { get; set; }
     

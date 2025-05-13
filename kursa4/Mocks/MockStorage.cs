@@ -11,7 +11,7 @@ public class MockStorage: ILaptopsStorage
         {
             return new List<Storage>
             {
-                new Storage { Type = "SSD", SizeGb = 1000 },
+                new Storage { Type = "SSD", SizeGb = 1024 },
                 new Storage { Type = "HDD", SizeGb = 556 },
             };
         }

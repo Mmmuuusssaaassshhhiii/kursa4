@@ -11,8 +11,8 @@ public class MockGpu : ILaptopsGpu
         {
             return new List<GPU>
             {
-                new GPU { Name = "Встроенная" },
-                new GPU { Name = "NVIDIA GeForce RTX 3050 4 ГБ" }
+                new GPU { Name = "NVIDIA GeForce RTX 5080 16 ГБ" },
+                new GPU { Name = "Встроенная" }
             };
         }
     }

@@ -11,7 +11,7 @@ public class MockCpu : ILaptopsCpu
         {
             return new List<CPU>
             {
-                new CPU { Name = "Intel Core i5 12450HX" },
+                new CPU { Name = "Intel Core Ultra 9 275HX" },
                 new CPU { Name = "AMD Ryzen 5 7535HS" }
             };
         }

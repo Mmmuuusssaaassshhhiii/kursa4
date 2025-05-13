@@ -11,7 +11,7 @@ public class MockRam : ILaptopsRam
         {
             return new List<RAM>
             {
-                new RAM { Type = "DDR5", SizeGb = 16 },
+                new RAM { Type = "DDR5", SizeGb = 32 },
                 new RAM { Type = "DDR4", SizeGb = 16 },
             };
         }
