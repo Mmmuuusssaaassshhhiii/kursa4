@@ -14,6 +14,7 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+      <PackageReference Include="Moq" Version="4.20.72" />
       <PackageReference Include="Pomelo.EntityFrameworkCore.Lolita.MySql" Version="6.0.5" />
       <PackageReference Include="System.Text.Json" Version="10.0.0-preview.4.25258.110" />
     </ItemGroup>
