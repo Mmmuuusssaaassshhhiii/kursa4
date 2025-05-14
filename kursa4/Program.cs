@@ -1,5 +1,7 @@
+using kursa4;
 using kursa4.Interfaces;
 using kursa4.Mocks;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,13 @@ builder.Services.AddTransient<ILaptopsGpu, MockGpu>();
 builder.Services.AddTransient<ILaptopsRam, MockRam>();
 builder.Services.AddTransient<ILaptopsStorage, MockStorage>();
 builder.Services.AddMvc();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 34))
+    )
+);
 
 var app = builder.Build();
 
