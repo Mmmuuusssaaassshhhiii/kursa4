@@ -14,6 +14,9 @@
 
     <ItemGroup>
       <Folder Include="Views\Laptops\" />
+      <Folder Include="wwwroot\img\" />
+      <Folder Include="wwwroot\js\" />
+      <Folder Include="wwwroot\pic\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,6 +24,11 @@
       <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
       <_ContentIncludedByDefault Remove="wwwroot\js\site.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+      <_ContentIncludedByDefault Remove="wwwroot\lib\jquery-validation\LICENSE.md" />
     </ItemGroup>
 
 </Project>

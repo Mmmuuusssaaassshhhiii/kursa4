@@ -13,7 +13,6 @@ A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.AssemblyInfo.cs
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.csproj.CoreCompileInputs.cache
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.MvcApplicationPartsAssemblyInfo.cache
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\scopedcss\bundle\kursa4.styles.css
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\zozgh93vjt-61n19gt1b8.gz
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\ojraytoyk9-t1cqhe9u97.gz
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\fueesncb91-c2jlpeoesf.gz
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\b68mvmbxwx-sejl45xvog.gz
@@ -58,21 +57,6 @@ A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\7tn6aojwrx-u9q1
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\3pt9iophi6-h1s4sie4z3.gz
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\ds2rvrigrk-4d85u1mtcx.gz
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\a6srvcu73n-0j3bgjxly4.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\l6dm5xw6wm-03hjc8e09r.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\17iicg1c2g-48y08845bh.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\vxj0gtv4d3-356vix0kms.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\1seyrqz0py-83jwlth58m.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\qr7h4v81n9-mrlpezrjn3.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\ur6a5ft4lt-worgj0nhwm.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\pf2ouj4ol4-gk0pw8i4co.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\gdbx4c28t6-x0q3zqp4vz.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\nl2mqq60o4-d6nrnj6jjx.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\mg6obm1mnl-m9qm4tazc0.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\oekczwx3om-ttgo8qnofa.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\4fot9j7wpm-jjsuc0puko.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\6au7b4trcm-9vr69e8ynj.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\0gx78pz83d-87fc7y1x7t.gz
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\458r8sc1w9-mlv21k5csn.gz
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\staticwebassets.build.json
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\staticwebassets.development.json
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -277,3 +261,4 @@ A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.sourcelink.json
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.csproj.Up2Date
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.RazorAssemblyInfo.cache
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.RazorAssemblyInfo.cs
+A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\q9tydfcqfv-5ipweew5fc.gz
