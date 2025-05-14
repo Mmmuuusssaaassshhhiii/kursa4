@@ -9,14 +9,19 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.3.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0-preview.4.25258.110">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+      <PackageReference Include="Pomelo.EntityFrameworkCore.Lolita.MySql" Version="6.0.5" />
+      <PackageReference Include="System.Text.Json" Version="10.0.0-preview.4.25258.110" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Views\Laptops\" />
       <Folder Include="wwwroot\img\" />
       <Folder Include="wwwroot\js\" />
-      <Folder Include="wwwroot\pic\" />
     </ItemGroup>
 
     <ItemGroup>
