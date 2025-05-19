@@ -26,7 +26,7 @@ public class MockUser : IAllUsers
             Role = "Admin"
         }
     };
-    
+
     public IEnumerable<User> Users => _users;
 
     public User GetUser(int userId)
@@ -65,5 +65,34 @@ public class MockUser : IAllUsers
         {
             _users.Remove(user);
         }
+    }
+    
+    public bool Register(string email, string password, string fullName, string phoneNumber)
+    {
+        if (_users.Any(u => u.Email == email))
+            return false; // уже существует
+
+        var newUser = new User
+        {
+            Id = _users.Max(u => u.Id) + 1,
+            Email = email,
+            Password = password,
+            FullName = fullName,
+            PhoneNumber = phoneNumber,
+            Role = "User"
+        };
+
+        _users.Add(newUser);
+        return true;
+    }
+    
+    public User Login(string email, string password)
+    {
+        return _users.FirstOrDefault(u => u.Email == email && u.Password == password);
+    }
+    
+    public void Logout(int userId)
+    {
+
     }
 }
