@@ -15,28 +15,28 @@
                 </svg>
             </a> 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li> 
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li> 
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li> 
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+                <li><a href="#" class="nav-link px-2 link-secondary">Каталог</a></li> 
+                <li><a href="#" class="nav-link px-2 link-body-emphasis">Заказы</a></li> 
+                <li><a href="#" class="nav-link px-2 link-body-emphasis">Корзина</a></li> 
             </ul> <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                 <input type="search" class="form-control" placeholder="Найти..." aria-label="Search">
             </form> 
             <div class="dropdown text-end"> 
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                      <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </a> <ul class="dropdown-menu text-small"> <li>
-                    <a class="dropdown-item" href="#">New project...</a>
+                    <a class="dropdown-item" href="#">Зарегестрироваться</a>
                 </li> <li>
-                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="#">Войти</a>
                 </li> <li>
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Личный кабинет</a>
                 </li> <li>
                     <hr class="dropdown-divider">
                 </li> <li>
-                    <a class="dropdown-item" href="#">Sign out</a>
+                    <a class="dropdown-item" href="#">Выйти</a>
                 </li> </ul> 
-            </div> 
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         </div> 
     </div> 
     </header>
@@ -44,8 +44,22 @@
     @RenderBody()
 </div>
 <footer class="py-3 my-4">
-     <ul class="nav justify-content-center border-bottom pb-3 mb-3"> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li> <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li> </ul>
-    <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Каталог</a>
+        </li> <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary">Заказы</a>
+        </li> 
+        <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary">Корзина</a>
+        </li> 
+        <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary">О разработчике</a>
+        </li> 
+        <li class="nav-item">
+            <a href="#" class="nav-link px-2 text-body-secondary">О приложении</a>
+        </li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2025 CyberNote, Made by Musashi</p>
 </footer>
 </body>
 </html>

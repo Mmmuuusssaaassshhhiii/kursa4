@@ -261,4 +261,4 @@ A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.sourcelink.json
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.csproj.Up2Date
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.RazorAssemblyInfo.cache
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\kursa4.RazorAssemblyInfo.cs
-A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\q9tydfcqfv-rc0gfujgvj.gz
+A:\универ\kursa4\kursa4\kursa4\obj\Debug\net9.0\compressed\q9tydfcqfv-keex9wfjla.gz
