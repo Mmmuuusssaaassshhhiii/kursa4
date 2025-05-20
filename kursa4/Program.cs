@@ -1,7 +1,14 @@
+using kursa4;
 using kursa4.Interfaces;
 using kursa4.Mocks;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Подключение к MySQL
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -12,7 +19,7 @@ builder.Services.AddTransient<ILaptopsCpu, MockCpu>();
 builder.Services.AddTransient<ILaptopsGpu, MockGpu>();
 builder.Services.AddTransient<ILaptopsRam, MockRam>();
 builder.Services.AddTransient<ILaptopsStorage, MockStorage>();
-builder.Services.AddTransient<IAllUsers, MockUser>();
+builder.Services.AddTransient<IAllUsers, MockUser>();   
 builder.Services.AddTransient<IUserCart, MockUserCart>();
 builder.Services.AddTransient<IUsersOrders, MockUsersOrder>();
 builder.Services.AddTransient<IUsersReviews, MockReview>();
