@@ -67,12 +67,8 @@ A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Composition.Hosting
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Composition.Runtime.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Composition.TypedParts.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Formats.Asn1.dll
-A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.IO.Pipelines.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Text.Encodings.Web.dll
-A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Text.Json.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\af\Humanizer.resources.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\ar\Humanizer.resources.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\az\Humanizer.resources.dll
@@ -212,7 +208,6 @@ A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net8.0\kursa4.csproj.AssemblyReference.cache
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net8.0\kursa4.GeneratedMSBuildEditorConfig.editorconfig
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net8.0\kursa4.AssemblyInfoInputs.cache
@@ -238,3 +233,11 @@ A:\универ\kursa4\kursa4\kursa4\obj\Debug\net8.0\refint\kursa4.dll
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net8.0\kursa4.pdb
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net8.0\kursa4.genruntimeconfig.cache
 A:\универ\kursa4\kursa4\kursa4\obj\Debug\net8.0\ref\kursa4.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Drawing.Common.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Security.Permissions.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.Windows.Extensions.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
