@@ -17,11 +17,12 @@
 
                 <div class="mb-3">
                     <label class="form-label">Производитель</label>
-                    <select class="form-select" name="category">
+                    <select class="form-select" name="brand">
                         <option value="">Все</option>
-                        <option value="gaming">Игровые</option>
-                        <option value="ultrabook">Ультрабуки</option>
-                        <option value="business">Бизнес</option>
+                        @foreach (var brand in (IEnumerable<kursa4.Models.Brand>)ViewBag.Brands)
+                        {
+                            <option value="@brand.Name">@brand.Name</option>
+                        }
                     </select>
                 </div>
 

@@ -5,9 +5,6 @@ namespace kursa4.Mocks;
 
 public class MockLaptop : IAllLaptops
 {
-    
-    //private readonly ILaptopsCategory _laptopsCategory = new MockCategory();
-    private readonly ILaptopsBrand _laptopsBrand = new MockBrand();
     private readonly ILaptopsCpu _laptopsCpu = new MockCpu();
     private readonly ILaptopsGpu _laptopsGpu = new MockGpu();
     private readonly ILaptopsRam _laptopsRam = new MockRam();
@@ -21,7 +18,6 @@ public class MockLaptop : IAllLaptops
             {
                 new Laptop
                 {
-                    Brand = _laptopsBrand.allBrands.First(),
                     Model = "ROG Strix SCAR 18 2025 G835LW-SA091",
                     CPU = _laptopsCpu.AllCPUs.First(),
                     GPU = _laptopsGpu.AllGPUs.First(),

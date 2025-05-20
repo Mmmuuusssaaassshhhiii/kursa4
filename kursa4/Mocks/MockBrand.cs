@@ -5,15 +5,12 @@ namespace kursa4.Mocks;
 
 public class MockBrand : ILaptopsBrand
 {
-    public IEnumerable<Brand> allBrands
+    private readonly ApplicationDbContext _context;
+
+    public MockBrand(ApplicationDbContext context)
     {
-        get
-        {
-            return new List<Brand>
-            {
-                new Brand { Name = "Asus", Description = "хахахахаахах, анус)))" },
-                new Brand { Name = "Lenovo", Description = "ну ничё такой бренд" }
-            };
-        }
+        _context = context;
     }
+
+    public IEnumerable<Brand> allBrands => _context.Brands.ToList();
 }

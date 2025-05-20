@@ -42,6 +42,7 @@ public class LaptopsController : Controller
         };
 
         ViewBag.Categories = _laptopsCategory.AllCategories;
+        ViewBag.Brands = _laptopsBrand.allBrands;
 
         return View(viewModel);
     }
