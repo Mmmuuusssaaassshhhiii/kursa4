@@ -1,19 +1,24 @@
 using kursa4.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace kursa4.Controllers
 {
     public class AccountController : Controller
     {
-        // Временное хранилище пользователей
-        private static readonly List<User> users = new List<User>();
+        private readonly ApplicationDbContext _context;
+
+        public AccountController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         // Главная страница личного кабинета
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var email = HttpContext.Session.GetString("UserEmail");
-            var user = users.FirstOrDefault(u => u.Email == email);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
 
             if (user == null)
                 return RedirectToAction("Login");
@@ -22,35 +27,39 @@ namespace kursa4.Controllers
         }
 
         // Заказы
-        public IActionResult Orders()
+        public async Task<IActionResult> Orders()
         {
             var email = HttpContext.Session.GetString("UserEmail");
             if (email == null)
                 return RedirectToAction("Login");
 
-            var orders = new List<Order>
-            {
-                new Order { Id = 123, OrderDate = DateTime.Now.AddDays(-5), Status = "доставлен" },
-                new Order { Id = 124, OrderDate = DateTime.Now.AddDays(-2), Status = "в обработке" }
-            };
+            var user = await _context.Users
+                .Include(u => u.Orders)
+                .FirstOrDefaultAsync(u => u.Email == email);
 
-            return View(orders);
+            if (user == null)
+                return RedirectToAction("Login");
+
+            return View(user.Orders.ToList());
         }
 
         // Корзина
-        public IActionResult Cart()
+        public async Task<IActionResult> Cart()
         {
             var email = HttpContext.Session.GetString("UserEmail");
             if (email == null)
                 return RedirectToAction("Login");
 
-            var cartItems = new List<CartItem>
-            {
-                new CartItem { Id = 1, Laptop = new Laptop { Model = "ASUS ROG Strix G18" }, Quantity = 1 },
-                new CartItem { Id = 2, Laptop = new Laptop { Model = "MacBook Air M2" }, Quantity = 2 }
-            };
+            var user = await _context.Users
+                .Include(u => u.Cart)
+                .ThenInclude(c => c.CartItems)
+                .ThenInclude(ci => ci.Laptop)
+                .FirstOrDefaultAsync(u => u.Email == email);
 
-            return View(cartItems);
+            if (user?.Cart?.CartItems == null)
+                return View(new List<CartItem>());
+
+            return View(user.Cart.CartItems.ToList());
         }
 
         // Регистрация (GET)
@@ -62,7 +71,7 @@ namespace kursa4.Controllers
 
         // Регистрация (POST)
         [HttpPost]
-        public IActionResult Register(User model, string confirmPassword)
+        public async Task<IActionResult> Register(User model, string confirmPassword)
         {
             if (!ModelState.IsValid)
                 return View(model);
@@ -73,14 +82,23 @@ namespace kursa4.Controllers
                 return View(model);
             }
 
-            if (users.Any(u => u.Email == model.Email))
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (existingUser != null)
             {
                 ModelState.AddModelError("Email", "Пользователь с таким Email уже существует");
                 return View(model);
             }
 
-            model.Role = "User"; // Назначение роли по умолчанию
-            users.Add(model);
+            model.Role = "User";
+
+            // Создание корзины вместе с пользователем
+            model.Cart = new Cart
+            {
+                CartItems = new List<CartItem>() // можно опустить, EF сам инициализирует
+            };
+
+            _context.Users.Add(model);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("Login");
         }
@@ -94,9 +112,9 @@ namespace kursa4.Controllers
 
         // Вход (POST)
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password)
         {
-            var user = users.FirstOrDefault(u => u.Email == email && u.Password == password);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
             if (user != null)
             {
                 HttpContext.Session.SetString("UserEmail", user.Email);
