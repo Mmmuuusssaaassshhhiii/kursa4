@@ -32,11 +32,10 @@ if (!app.Environment.IsDevelopment())
 app.UseSession();
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
-app.UseStaticFiles();
 
 app.MapControllerRoute(
     name: "default",
