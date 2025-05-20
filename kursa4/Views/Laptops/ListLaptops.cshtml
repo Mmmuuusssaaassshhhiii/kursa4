@@ -1,17 +1,70 @@
-<h1>Все ноутбуки</h1>
-<h3>@Model.currCategory</h3>
-<div class="row mt-5 mb-2">
-    @{
-        foreach (var laptop in Model.allLaptops)
+<div class="row mt-4">
+    <!-- Sidebar -->
+    <div class="col-md-3">
+        <div class="card p-3 shadow-sm">
+            <h5>Фильтры</h5>
+            <form method="get" action="">
+                <div class="mb-3">
+                    <label class="form-label">Категория</label>
+                    <select class="form-select" name="category">
+                        <option value="">Все</option>
+                        <option value="gaming">Игровые</option>
+                        <option value="ultrabook">Ультрабуки</option>
+                        <option value="business">Бизнес</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Цена от</label>
+                    <input type="number" class="form-control" name="priceFrom" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Цена до</label>
+                    <input type="number" class="form-control" name="priceTo" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Сортировать по</label>
+                    <select class="form-select" name="sortBy">
+                        <option value="priceAsc">Цена ↑</option>
+                        <option value="priceDesc">Цена ↓</option>
+                        <option value="rating">Рейтинг</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Применить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Products -->
+    <div class="col-md-9">
+        <h2 class="mb-4">Все ноутбуки</h2>
+
+        @foreach (var laptop in Model.allLaptops)
         {
-            <div class="col-lg-4">
-                <img class="img-thumbnail" src="@laptop.ImageUrl" alt="залупа нейкая" />
-                <h2>@laptop.Model</h2>
-                <p>Цена: @laptop.Price.ToString("c")</p>
-                <p>
-                    <a class="btn btn-warning" href="#">Подробнее</a>
-                </p>
+            <div class="card mb-3 shadow-sm">
+                <div class="row g-0">
+                    <!-- Изображение -->
+                    <div class="col-md-4">
+                        <img src="@laptop.ImageUrl" class="img-fluid rounded-start" alt="@laptop.Model">
+                    </div>
+
+                    <!-- Описание -->
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@laptop.Model</h5>
+                            <p class="card-text mb-1">
+                                <strong>Цена:</strong> @laptop.Price.ToString("c")
+                            </p>
+                            <p class="card-text text-muted">
+                                @laptop.Description
+                            </p>
+                            <a href="/Laptops/Details/@laptop.Id" class="btn btn-outline-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         }
-    }
+    </div>
 </div>
