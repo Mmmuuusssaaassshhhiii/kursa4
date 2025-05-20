@@ -8,9 +8,10 @@
                     <label class="form-label">Категория</label>
                     <select class="form-select" name="category">
                         <option value="">Все</option>
-                        <option value="gaming">Игровые</option>
-                        <option value="ultrabook">Ультрабуки</option>
-                        <option value="business">Бизнес</option>
+                        @foreach (var category in (IEnumerable<kursa4.Models.Category>)ViewBag.Categories)
+                        {
+                            <option value="@category.Name">@category.Name</option>
+                        }
                     </select>
                 </div>
 

@@ -32,11 +32,17 @@ public class LaptopsController : Controller
     }
 
     public ViewResult ListLaptops()
-    { 
+    {
         ViewBag.Title = "Страница с ноутбуками";
-       LaptopsListViewModel obj = new LaptopsListViewModel();
-       obj.allLaptops = _allLaptops.Laptops;
-       obj.currCategory = "Ноутбуки";
-       return View(obj);
+
+        var viewModel = new LaptopsListViewModel
+        {
+            allLaptops = _allLaptops.Laptops,
+            currCategory = "Ноутбуки"
+        };
+
+        ViewBag.Categories = _laptopsCategory.AllCategories;
+
+        return View(viewModel);
     }
 }

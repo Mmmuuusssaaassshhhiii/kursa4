@@ -5,15 +5,12 @@ namespace kursa4.Mocks;
 
 public class MockCategory : ILaptopsCategory
 {
-    public IEnumerable<Category> AllCategories
+    private readonly ApplicationDbContext _context;
+
+    public MockCategory(ApplicationDbContext context)
     {
-        get
-        {
-            return new List<Category>
-            {
-                new Category { Name = "Игровые", Description = "Мощные ноутбуки, на них ты будешь апать ммры)" },
-                new Category { Name = "Для работы", Description = "Эти ноутбуки не стыдно взять с собой в кофейню, чтобы сидеть пить лавандовый раф на альтернативном молоке и параллеьно заниматься фрилансом"}
-            };
-        }
-    } 
+        _context = context;
+    }
+
+    public IEnumerable<Category> AllCategories => _context.Categories.ToList(); 
 }
