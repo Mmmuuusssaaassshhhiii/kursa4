@@ -1,0 +1,44 @@
+@model kursa4.Models.User
+@{
+    ViewBag.Title = "Регистрация";
+}
+
+<form asp-action="Register" method="post" class="w-100 m-auto" style="max-width: 400px;">
+    <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
+
+    <div class="form-floating mb-2">
+        <input asp-for="FullName" class="form-control" placeholder="Имя Фамилия" required />
+        <label asp-for="FullName">ФИО</label>
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-2">
+        <input asp-for="Email" class="form-control" placeholder="email@example.com" required />
+        <label asp-for="Email">Email</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-2">
+        <input asp-for="PhoneNumber" class="form-control" placeholder="+7..." required />
+        <label asp-for="PhoneNumber">Номер телефона</label>
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-2">
+        <input asp-for="Password" class="form-control" type="password" placeholder="Пароль" required />
+        <label asp-for="Password">Пароль</label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="password" name="ConfirmPassword" class="form-control" placeholder="Подтвердите пароль" required />
+        <label for="ConfirmPassword">Подтвердите пароль</label>
+    </div>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">Пожалуйста, исправьте ошибки в форме.</div>
+    }
+
+    <button class="btn btn-primary w-100 py-2" type="submit">Зарегистрироваться</button>
+</form>
