@@ -1,0 +1,29 @@
+@model kursa4.Models.User
+
+@{
+    ViewData["Title"] = "Личный кабинет";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    
+    <div class="card p-4 shadow-sm">
+        <h4 class="mb-3">Информация о пользователе</h4>
+
+        <dl class="row">
+            <dt class="col-sm-3">Имя пользователя:</dt>
+            <dd class="col-sm-9">@Model.FullName</dd>
+
+            <dt class="col-sm-3">Email:</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">Телефон:</dt>
+            <dd class="col-sm-9">@Model.PhoneNumber</dd>
+        </dl>
+    </div>
+
+    <div class="mt-4">
+        <a class="btn btn-primary" href="/Account/Orders">Мои заказы</a>
+        <a class="btn btn-secondary" href="/Account/Cart">Корзина</a>
+    </div>
+</div>

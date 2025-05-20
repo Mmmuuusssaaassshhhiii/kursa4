@@ -15,9 +15,7 @@
                 </svg>
             </a> 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Каталог</a></li> 
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Заказы</a></li> 
-                <li><a href="#" class="nav-link px-2 link-body-emphasis">Корзина</a></li> 
+                <li><a asp-controller="Laptops" asp-action="ListLaptops" class="nav-link px-2 link-secondary">CyberNote</a></li> 
             </ul> <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                  <input type="search" class="form-control" placeholder="Найти..." aria-label="Search">
             </form> 
@@ -27,9 +25,9 @@
                 </a> <ul class="dropdown-menu text-small"> <li>
                     <a class="dropdown-item" href="#">Зарегестрироваться</a>
                 </li> <li>
-                    <a class="dropdown-item" href="#">Войти</a>
+                    <a class="dropdown-item" >Войти</a>
                 </li> <li>
-                    <a class="dropdown-item" href="#">Личный кабинет</a>
+                    <a class="dropdown-item" asp-controller="Account" asp-action="Index">Личный кабинет</a>
                 </li> <li>
                     <hr class="dropdown-divider">
                 </li> <li>
@@ -46,11 +44,6 @@
 <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Каталог</a>
-        </li> <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">Заказы</a>
-        </li> 
-        <li class="nav-item">
-            <a href="#" class="nav-link px-2 text-body-secondary">Корзина</a>
         </li> 
         <li class="nav-item">
             <a href="#" class="nav-link px-2 text-body-secondary">О разработчике</a>
