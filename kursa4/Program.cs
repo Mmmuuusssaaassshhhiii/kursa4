@@ -12,6 +12,10 @@ builder.Services.AddTransient<ILaptopsCpu, MockCpu>();
 builder.Services.AddTransient<ILaptopsGpu, MockGpu>();
 builder.Services.AddTransient<ILaptopsRam, MockRam>();
 builder.Services.AddTransient<ILaptopsStorage, MockStorage>();
+builder.Services.AddTransient<IAllUsers, MockUser>();
+builder.Services.AddTransient<IUserCart, MockUserCart>();
+builder.Services.AddTransient<IUsersOrders, MockUsersOrder>();
+builder.Services.AddTransient<IUsersReviews, MockReview>();
 builder.Services.AddMvc();
 
 var app = builder.Build();
