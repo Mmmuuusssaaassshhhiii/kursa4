@@ -38,12 +38,9 @@ app.UseAuthorization();
 
 app.UseStaticFiles();
 
-app.MapStaticAssets();
-
 app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Laptops}/{action=ListLaptops}/{id?}")
-    .WithStaticAssets();
+    name: "default",
+    pattern: "{controller=Laptops}/{action=ListLaptops}/{id?}");
 
 
 app.Run();

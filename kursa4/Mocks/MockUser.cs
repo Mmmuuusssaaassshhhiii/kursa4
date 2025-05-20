@@ -9,21 +9,11 @@ public class MockUser : IAllUsers
     {
         new User
         {
-            Id = 1,
-            Email = "test@test.com",
-            Password = "test",
-            FullName = "Pidor",
-            PhoneNumber = "123456",
-            Role = "User",
+           
         },
         new User
         {
-            Id = 2,
-            Email = "admin@example.com",
-            Password = "adminpass",
-            FullName = "Admin User",
-            PhoneNumber = "0987654321",
-            Role = "Admin"
+           
         }
     };
 
