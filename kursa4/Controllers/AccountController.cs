@@ -14,14 +14,20 @@ namespace kursa4.Controllers
             _context = context;
         }
 
+        // Вспомогательный метод для получения текущего пользователя
+        private async Task<User?> GetCurrentUserAsync()
+        {
+            var email = HttpContext.Session.GetString("UserEmail");
+            if (string.IsNullOrEmpty(email)) return null;
+
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
         // Главная страница личного кабинета
         public async Task<IActionResult> Index()
         {
-            var email = HttpContext.Session.GetString("UserEmail");
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-
-            if (user == null)
-                return RedirectToAction("Login");
+            var user = await GetCurrentUserAsync();
+            if (user == null) return RedirectToAction("Login");
 
             return View(user);
         }
@@ -30,15 +36,13 @@ namespace kursa4.Controllers
         public async Task<IActionResult> Orders()
         {
             var email = HttpContext.Session.GetString("UserEmail");
-            if (email == null)
-                return RedirectToAction("Login");
+            if (string.IsNullOrEmpty(email)) return RedirectToAction("Login");
 
             var user = await _context.Users
                 .Include(u => u.Orders)
                 .FirstOrDefaultAsync(u => u.Email == email);
 
-            if (user == null)
-                return RedirectToAction("Login");
+            if (user == null) return RedirectToAction("Login");
 
             return View(user.Orders.ToList());
         }
@@ -47,8 +51,7 @@ namespace kursa4.Controllers
         public async Task<IActionResult> Cart()
         {
             var email = HttpContext.Session.GetString("UserEmail");
-            if (email == null)
-                return RedirectToAction("Login");
+            if (string.IsNullOrEmpty(email)) return RedirectToAction("Login");
 
             var user = await _context.Users
                 .Include(u => u.Cart)
@@ -90,12 +93,7 @@ namespace kursa4.Controllers
             }
 
             model.Role = "User";
-
-            // Создание корзины вместе с пользователем
-            model.Cart = new Cart
-            {
-                CartItems = new List<CartItem>() // можно опустить, EF сам инициализирует
-            };
+            model.Cart = new Cart(); // EF сам создаст CartItems при необходимости
 
             _context.Users.Add(model);
             await _context.SaveChangesAsync();
@@ -118,6 +116,11 @@ namespace kursa4.Controllers
             if (user != null)
             {
                 HttpContext.Session.SetString("UserEmail", user.Email);
+                HttpContext.Session.SetString("UserRole", user.Role);
+
+                if (user.Role == "Admin")
+                    return RedirectToAction("Index", "Admin");
+
                 return RedirectToAction("Index");
             }
 

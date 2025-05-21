@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Админ-панель";
+}
+
+<h2>Панель администратора</h2>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Пользователи</h5>
+                <p class="card-text">Всего: @ViewBag.UserCount</p>
+                <a href="/Admin/Users" class="btn btn-light">Перейти</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Заказы</h5>
+                <p class="card-text">Всего: @ViewBag.OrderCount</p>
+                <a href="/Admin/Orders" class="btn btn-light">Перейти</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Ноутбуки</h5>
+                <p class="card-text">Всего: @ViewBag.LaptopCount</p>
+                <a href="/Admin/Laptops" class="btn btn-light">Перейти</a>
+            </div>
+        </div>
+    </div>
+</div>
