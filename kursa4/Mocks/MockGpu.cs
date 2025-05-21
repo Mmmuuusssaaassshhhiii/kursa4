@@ -5,15 +5,36 @@ namespace kursa4.Mocks;
 
 public class MockGpu : ILaptopsGpu
 {
-    public IEnumerable<GPU> AllGPUs
+    private readonly ApplicationDbContext _context;
+
+    public MockGpu(ApplicationDbContext context)
     {
-        get
+        _context = context;
+    }
+
+    public IEnumerable<GPU> AllGPUs => _context.GPUs.ToList();
+
+    public GPU GetGPU(int id) => _context.GPUs.Find(id);
+
+    public void AddGPU(GPU gpu)
+    {
+        _context.GPUs.Add(gpu);
+        _context.SaveChanges();
+    }
+
+    public void UpdateGPU(GPU gpu)
+    {
+        _context.GPUs.Update(gpu);
+        _context.SaveChanges();
+    }
+
+    public void DeleteGPU(int id)
+    {
+        var gpu = _context.GPUs.Find(id);
+        if (gpu != null)
         {
-            return new List<GPU>
-            {
-                new GPU { Name = "NVIDIA GeForce RTX 5080 16 ГБ" },
-                new GPU { Name = "Встроенная" }
-            };
+            _context.GPUs.Remove(gpu);
+            _context.SaveChanges();
         }
     }
 }
