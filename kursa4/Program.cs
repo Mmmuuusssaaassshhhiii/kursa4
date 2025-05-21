@@ -12,17 +12,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IAllLaptops, MockLaptop>();
-builder.Services.AddTransient<ILaptopsCategory, MockCategory>();
-builder.Services.AddTransient<ILaptopsBrand, MockBrand>();
-builder.Services.AddTransient<ILaptopsCpu, MockCpu>();
-builder.Services.AddTransient<ILaptopsGpu, MockGpu>();
-builder.Services.AddTransient<ILaptopsRam, MockRam>();
-builder.Services.AddTransient<ILaptopsStorage, MockStorage>();
-builder.Services.AddTransient<IAllUsers, MockUser>();   
-builder.Services.AddTransient<IUserCart, MockUserCart>();
-builder.Services.AddTransient<IUsersOrders, MockUsersOrder>();
-builder.Services.AddTransient<IUsersReviews, MockReview>();
+builder.Services.AddTransient<IAllLaptops, LaptopRepository>();
+builder.Services.AddTransient<ILaptopsCategory, CategoryRepository>();
+builder.Services.AddTransient<ILaptopsBrand, BrandRepository>();
+builder.Services.AddTransient<ILaptopsCpu, CpuRepository>();
+builder.Services.AddTransient<ILaptopsGpu, GpuRepository>();
+builder.Services.AddTransient<ILaptopsRam, RamRepository>();
+builder.Services.AddTransient<ILaptopsStorage, StorageRepository>();
+builder.Services.AddTransient<IAllUsers, UserRepository>();   
+builder.Services.AddTransient<IUserCart, UserCartRepository>();
+builder.Services.AddTransient<IUsersOrders, UsersOrderRepository>();
+builder.Services.AddTransient<IUsersReviews, ReviewRepository>();
 builder.Services.AddMvc();
 builder.Services.AddSession();
 

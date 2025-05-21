@@ -3,11 +3,11 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockGpu : ILaptopsGpu
+public class GpuRepository : ILaptopsGpu
 {
     private readonly ApplicationDbContext _context;
 
-    public MockGpu(ApplicationDbContext context)
+    public GpuRepository(ApplicationDbContext context)
     {
         _context = context;
     }

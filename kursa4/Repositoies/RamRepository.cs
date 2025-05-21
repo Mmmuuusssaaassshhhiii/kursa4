@@ -3,11 +3,11 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockRam : ILaptopsRam
+public class RamRepository : ILaptopsRam
 {
     private readonly ApplicationDbContext _context;
 
-    public MockRam(ApplicationDbContext context)
+    public RamRepository(ApplicationDbContext context)
     {
         _context = context;
     }

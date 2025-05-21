@@ -3,7 +3,7 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockUsersOrder : IUsersOrders
+public class UsersOrderRepository : IUsersOrders
 {
     private readonly List<Order> _orders = new();
     private readonly List<OrderItem> _orderItems = new();

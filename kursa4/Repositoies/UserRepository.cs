@@ -3,7 +3,7 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockUser : IAllUsers
+public class UserRepository : IAllUsers
 {
     private List<User> _users = new List<User>
     {

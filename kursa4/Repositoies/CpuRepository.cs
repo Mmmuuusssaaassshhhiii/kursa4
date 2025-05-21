@@ -3,11 +3,11 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockCpu : ILaptopsCpu
+public class CpuRepository : ILaptopsCpu
 {
   private readonly ApplicationDbContext _context;
 
-  public MockCpu(ApplicationDbContext context)
+  public CpuRepository(ApplicationDbContext context)
   {
     _context = context;
   }

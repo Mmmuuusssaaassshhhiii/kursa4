@@ -3,11 +3,11 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockBrand : ILaptopsBrand
+public class BrandRepository : ILaptopsBrand
 {
     private readonly ApplicationDbContext _context;
 
-    private MockBrand(ApplicationDbContext context)
+    public BrandRepository(ApplicationDbContext context)
     {
         _context = context;
     }

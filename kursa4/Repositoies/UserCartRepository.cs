@@ -3,7 +3,7 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockUserCart : IUserCart
+public class UserCartRepository : IUserCart
 {
     private readonly List<Cart> _carts = new List<Cart>();
     private int _itemIdCounter = 1;

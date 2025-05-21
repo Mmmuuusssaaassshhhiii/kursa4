@@ -3,11 +3,11 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockStorage: ILaptopsStorage
+public class StorageRepository: ILaptopsStorage
 {
     private readonly ApplicationDbContext _context;
 
-    public MockStorage(ApplicationDbContext context)
+    public StorageRepository(ApplicationDbContext context)
     {
         _context = context;
     }

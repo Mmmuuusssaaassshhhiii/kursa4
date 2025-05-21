@@ -3,11 +3,11 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockCategory : ILaptopsCategory
+public class CategoryRepository : ILaptopsCategory
 {
     private readonly ApplicationDbContext _context;
 
-    public MockCategory(ApplicationDbContext context)
+    public CategoryRepository(ApplicationDbContext context)
     {
         _context = context;
     }

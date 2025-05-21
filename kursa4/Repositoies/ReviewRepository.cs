@@ -3,7 +3,7 @@ using kursa4.Models;
 
 namespace kursa4.Mocks;
 
-public class MockReview : IUsersReviews
+public class ReviewRepository : IUsersReviews
 {
     private readonly List<Review> _reviews = new List<Review>
     {

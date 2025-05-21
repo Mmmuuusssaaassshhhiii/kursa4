@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kursa4.Mocks;
 
-public class MockLaptop : IAllLaptops
+public class LaptopRepository : IAllLaptops
 {
     private readonly ApplicationDbContext _context;
 
-    public MockLaptop(ApplicationDbContext context)
+    public LaptopRepository(ApplicationDbContext context)
     {
         _context = context;
     }
