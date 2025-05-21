@@ -8,7 +8,7 @@
 
     <div class="form-floating mb-2">
         <input asp-for="FullName" class="form-control" placeholder="Имя Фамилия" required />
-        <label asp-for="FullName">ФИО</label>
+        <label asp-for="FullName">Имя пользователя</label>
         <span asp-validation-for="FullName" class="text-danger"></span>
     </div>
 
@@ -19,7 +19,7 @@
     </div>
 
     <div class="form-floating mb-2">
-        <input asp-for="PhoneNumber" class="form-control" placeholder="+7..." required />
+        <input asp-for="PhoneNumber" class="form-control" id="phoneInput" placeholder="+375(11)111-11-11" required />
         <label asp-for="PhoneNumber">Номер телефона</label>
         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
