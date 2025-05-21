@@ -1,0 +1,31 @@
+@model IEnumerable<kursa4.Models.User>
+
+@{
+    ViewData["Title"] = "Список пользователей";
+}
+
+<h2 class="mb-4">Список пользователей</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Имя</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>Роль</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.FullName</td>
+            <td>@user.Email</td>
+            <td>@user.PhoneNumber</td>
+            <td>@user.Role</td>
+        </tr>
+    }
+    </tbody>
+</table>
