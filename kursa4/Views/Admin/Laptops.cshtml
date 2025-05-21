@@ -1,0 +1,60 @@
+@model IEnumerable<kursa4.Models.Laptop>
+
+@{
+    ViewData["Title"] = "Ноутбуки";
+}
+
+<h2 class="mb-4">Список ноутбуков</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle table-sm">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>CPU / GPU</th>
+            <th>ОЗУ / Память</th>
+            <th>Экран</th>
+            <th>Частота / Батарея</th>
+            <th>Размер / Вес</th>
+            <th>Клав. / Камера</th>
+            <th>OS</th>
+            <th>Цена</th>
+            <th>В наличии</th>
+            <th>Год</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var laptop in Model)
+        {
+            <tr>
+                <td>@laptop.Id</td>
+                <td>@($"{laptop.Brand?.Name} {laptop.Model}")</td>
+                <td>@laptop.Category?.Name</td>
+                <td>
+                    @laptop.CPU?.Name<br />
+                    @laptop.GPU?.Name
+                </td>
+                <td>@($"{laptop.RAM?.SizeGb} ГБ / {laptop.Storage?.SizeGb} ГБ")</td>
+                <td>@($"{laptop.ScreenSize}\" / {laptop.Resolution}")</td>
+                <td>@($"{laptop.RefreshRate} Гц / {laptop.BatteryWh} Втч")</td>
+                <td>@($"{laptop.Width}×{laptop.Height}×{laptop.Depth} см / {laptop.Weight} кг")</td>
+                <td>
+                    @(laptop.KeyboardBackLight ? "Подсветка" : "-") /
+                    @(laptop.HasWebcam ? "Камера" : "-")
+                </td>
+                <td>@laptop.OS</td>
+                <td>@($"{laptop.Price:C}")</td>
+                <td>@laptop.StockQuantity</td>
+                <td>@laptop.ReleaseYear</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@laptop.Id" class="btn btn-sm btn-warning">Изменить</a>
+                    <a asp-action="Delete" asp-route-id="@laptop.Id" class="btn btn-sm btn-danger">Удалить</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
