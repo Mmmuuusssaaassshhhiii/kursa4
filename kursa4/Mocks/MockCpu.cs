@@ -5,15 +5,36 @@ namespace kursa4.Mocks;
 
 public class MockCpu : ILaptopsCpu
 {
-    public IEnumerable<CPU> AllCPUs
+  private readonly ApplicationDbContext _context;
+
+  public MockCpu(ApplicationDbContext context)
+  {
+    _context = context;
+  }
+
+  public IEnumerable<CPU> AllCPUs => _context.CPUs.ToList();
+
+  public CPU GetCPU(int id) => _context.CPUs.Find(id);
+
+  public void AddCPU(CPU cpu)
+  {
+    _context.CPUs.Add(cpu);
+    _context.SaveChanges();
+  }
+
+  public void UpdateCPU(CPU cpu)
+  {
+    _context.CPUs.Update(cpu);
+    _context.SaveChanges();
+  }
+
+  public void DeleteCPU(int id)
+  {
+    var cpu = _context.CPUs.Find(id);
+    if (cpu != null)
     {
-        get
-        {
-            return new List<CPU>
-            {
-                new CPU { Name = "Intel Core Ultra 9 275HX" },
-                new CPU { Name = "AMD Ryzen 5 7535HS" }
-            };
-        }
+      _context.CPUs.Remove(cpu);
+      _context.SaveChanges();
     }
+  }
 }
