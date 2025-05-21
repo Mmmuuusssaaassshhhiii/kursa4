@@ -1,52 +1,58 @@
 using kursa4.Interfaces;
 using kursa4.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace kursa4.Mocks;
 
 public class MockLaptop : IAllLaptops
 {
-    private readonly ILaptopsCpu _laptopsCpu = new MockCpu();
-    private readonly ILaptopsGpu _laptopsGpu = new MockGpu();
-    private readonly ILaptopsRam _laptopsRam = new MockRam();
-    private readonly ILaptopsStorage _laptopsStorage = new MockStorage();
-    
-    public IEnumerable<Laptop> Laptops
+    private readonly ApplicationDbContext _context;
+
+    public MockLaptop(ApplicationDbContext context)
     {
-        get
-        {
-            return new List<Laptop>
-            {
-                new Laptop
-                {
-                    Model = "ROG Strix SCAR 18 2025 G835LW-SA091",
-                    CPU = _laptopsCpu.AllCPUs.First(),
-                    GPU = _laptopsGpu.AllGPUs.First(),
-                    RAM = _laptopsRam.AllRams.First(),
-                    Storage = _laptopsStorage.AllStorages.First(),
-                    ////Category = _laptopsCategory.AllCategories.First(),
-                    ScreenSize = 18,
-                    Resolution = "2560 x 1600",
-                    RefreshRate = 240,
-                    KeyboardBackLight = true,
-                    HasWebcam = true,
-                    Weight = 3480,
-                    Width = 399,
-                    Height = 298,
-                    Depth = 32,
-                    Price = 12020,
-                    Description = "Машина, а не ноутбук",
-                    ReleaseYear = 2025,
-                    StockQuantity = 15,
-                    ImageUrl = "/img/laptopAsusRog.jpg",
-                    BatteryWh = 90,
-                    OS = "без ОС",
-                },
-            };
-        }
+        _context = context;
+    }
+    
+    public IEnumerable<Laptop> Laptops => _context.Laptops
+        .Include(l => l.Brand)
+        .Include(l => l.Category)
+        .Include(l => l.CPU)
+        .Include(l => l.GPU)
+        .Include(l => l.RAM)
+        .Include(l => l.Storage)
+        .ToList();
+
+    public Laptop GetLaptop(int laptopId)
+    {
+        return _context.Laptops
+            .Include(l => l.Brand)
+            .Include(l => l.Category)
+            .Include(l => l.CPU)
+            .Include(l => l.GPU)
+            .Include(l => l.RAM)
+            .Include(l => l.Storage)
+            .FirstOrDefault(l => l.Id == laptopId);
     }
 
-    public Laptop GetLaptop(int carId)
+    public void AddLaptop(Laptop laptop)
     {
-        throw new NotImplementedException();
+        _context.Laptops.Add(laptop);
+        _context.SaveChanges();
+    }
+
+    public void UpdateLaptop(Laptop laptop)
+    {
+        _context.Laptops.Update(laptop);
+        _context.SaveChanges();
+    }
+
+    public void DeleteLaptop(int id)
+    {
+        var laptop = _context.Laptops.Find(id);
+        if (laptop != null)
+        {
+            _context.Laptops.Remove(laptop);
+            _context.SaveChanges();
+        }
     }
 }
