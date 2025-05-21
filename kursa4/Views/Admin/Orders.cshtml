@@ -1,0 +1,31 @@
+@model IEnumerable<kursa4.Models.Order>
+
+@{
+    ViewData["Title"] = "Список заказов";
+}
+
+<h2 class="mb-4">Список заказов</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Пользователь</th>
+        <th>Дата</th>
+        <th>Статус</th>
+        <th>Сумма</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.Id</td>
+            <td>@order.User?.FullName (@order.User?.Email)</td>
+            <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+            <td>@order.Status</td>
+            <td>@($"{order.Payment:C}")</td>
+        </tr>
+    }
+    </tbody>
+</table>
