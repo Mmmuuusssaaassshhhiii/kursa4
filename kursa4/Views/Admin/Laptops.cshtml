@@ -6,6 +6,10 @@
 
 <h2 class="mb-4">Список ноутбуков</h2>
 
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addLaptopModal">
+    Добавить ноутбук
+</button>
+
 <div class="table-responsive">
     <table class="table table-bordered table-striped align-middle table-sm">
         <thead class="table-dark">
@@ -57,4 +61,54 @@
         }
         </tbody>
     </table>
+
+    <!-- Модальное окно добавления -->
+    <div class="modal fade" id="addLaptopModal" tabindex="-1" aria-labelledby="addLaptopModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <form asp-action="AddLaptop" asp-controller="Admin" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addLaptopModalLabel">Добавить ноутбук</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label class="form-label">Модель</label>
+                            <input type="text" name="Model" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Категория</label>
+                            <select name="CategoryId" class="form-select" required>
+                                <option value="">Выберите категорию</option>
+                                @foreach (var category in ViewBag.Categories)
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Бренд</label>
+                            <select name="BrandId" class="form-select" required>
+                                <option value="">Выберите бренд</option>
+                                @foreach (var brand in ViewBag.Brands)
+                                {
+                                    <option value="@brand.Id">@brand.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Добавь другие поля аналогично (CPU, GPU, RAM, Storage, и т.д.) -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-success">Добавить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

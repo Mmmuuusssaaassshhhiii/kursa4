@@ -1,3 +1,4 @@
+using kursa4.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +37,13 @@ public class AdminController : Controller
             .Include(l => l.Storage)
             .ToListAsync();
         
+        ViewBag.Categories = await _context.Categories.ToListAsync();
+        ViewBag.Brands = await _context.Brands.ToListAsync();
+        ViewBag.CPUs = await _context.CPUs.ToListAsync();
+        ViewBag.GPUs = await _context.GPUs.ToListAsync();
+        ViewBag.RAMs = await _context.RAMs.ToListAsync();
+        ViewBag.Storage = await _context.Storages.ToListAsync();
+        
         return View(laptops);
     }
 
@@ -53,5 +61,20 @@ public class AdminController : Controller
             .ToListAsync();
         
         return View(orders);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddLaptop(Laptop laptop)
+    {
+        if (!ModelState.IsValid)
+        {
+            return RedirectToAction("Laptops");
+        }
+        
+        _context.Laptops.Add(laptop);
+        await _context.SaveChangesAsync();
+        
+        return RedirectToAction("Laptops");
     }
 }
