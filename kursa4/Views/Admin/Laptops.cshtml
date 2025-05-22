@@ -129,7 +129,7 @@
                                 <option value="">Выберите ОЗУ</option>
                                 @foreach (var ram in ViewBag.RAMs)
                                 {
-                                    <option value="@ram.Id">@ram.Type</option>
+                                    <option value="@ram.Id">@($"{ram.Type} - {ram.SizeGb} ГБ")</option>
                                 }
                             </select>
                         </div>
@@ -140,7 +140,7 @@
                                 <option value="">Выберите память</option>
                                 @foreach (var storage in ViewBag.Storages)
                                 {
-                                    <option value="@storage.Id">@storage.Type</option>
+                                    <option value="@storage.Id">@($"{storage.Type} - {storage.SizeGb} ГБ")</option>
                                 }
                             </select>
                         </div>
