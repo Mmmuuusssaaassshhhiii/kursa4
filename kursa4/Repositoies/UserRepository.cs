@@ -5,17 +5,7 @@ namespace kursa4.Mocks;
 
 public class UserRepository : IAllUsers
 {
-    private List<User> _users = new List<User>
-    {
-        new User
-        {
-           
-        },
-        new User
-        {
-           
-        }
-    };
+    private List<User> _users = new List<User>();
 
     public IEnumerable<User> Users => _users;
 
