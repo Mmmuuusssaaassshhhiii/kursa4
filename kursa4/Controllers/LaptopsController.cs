@@ -43,6 +43,10 @@ public class LaptopsController : Controller
 
         ViewBag.Categories = _laptopsCategory.AllCategories;
         ViewBag.Brands = _laptopsBrand.allBrands;
+        ViewBag.CPUs = _laptopsCpu.AllCPUs;
+        ViewBag.GPUs = _laptopsGpu.AllGPUs;
+        ViewBag.Rams = _laptopsRam.AllRams;
+        ViewBag.Storages = _laptopsStorage.AllStorages;
 
         return View(viewModel);
     }

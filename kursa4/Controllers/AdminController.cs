@@ -42,7 +42,7 @@ public class AdminController : Controller
         ViewBag.CPUs = await _context.CPUs.ToListAsync();
         ViewBag.GPUs = await _context.GPUs.ToListAsync();
         ViewBag.RAMs = await _context.RAMs.ToListAsync();
-        ViewBag.Storage = await _context.Storages.ToListAsync();
+        ViewBag.Storages = await _context.Storages.ToListAsync();
         
         return View(laptops);
     }

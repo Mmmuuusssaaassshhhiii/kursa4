@@ -64,14 +64,14 @@
 
     <!-- Модальное окно добавления -->
     <div class="modal fade" id="addLaptopModal" tabindex="-1" aria-labelledby="addLaptopModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <form asp-action="AddLaptop" asp-controller="Admin" method="post">
                     <div class="modal-header">
                         <h5 class="modal-title" id="addLaptopModalLabel">Добавить ноутбук</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="max-height: calc(100vh - 200px); overflow-y: auto;">
                         @Html.AntiForgeryToken()
 
                         <div class="mb-3">
@@ -101,7 +101,75 @@
                             </select>
                         </div>
 
-                        <!-- Добавь другие поля аналогично (CPU, GPU, RAM, Storage, и т.д.) -->
+                        <div class="mb-3">
+                            <label class="form-label">ЦПУ</label>
+                            <select name="CPUId" class="form-select" required>
+                                <option value="">Выберите ЦПУ</option>
+                                @foreach (var cpu in ViewBag.CPUs)
+                                {
+                                    <option value="@cpu.Id">@cpu.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">ГПУ</label>
+                            <select name="GPUId" class="form-select" required>
+                                <option value="">Выберите ГПУ</option>
+                                @foreach (var gpu in ViewBag.GPUs)
+                                {
+                                    <option value="@gpu.Id">@gpu.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">ОЗУ</label>
+                            <select name="RAMId" class="form-select" required>
+                                <option value="">Выберите ОЗУ</option>
+                                @foreach (var ram in ViewBag.RAMs)
+                                {
+                                    <option value="@ram.Id">@ram.Type</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Память</label>
+                            <select name="StorageId" class="form-select" required>
+                                <option value="">Выберите память</option>
+                                @foreach (var storage in ViewBag.Storages)
+                                {
+                                    <option value="@storage.Id">@storage.Type</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Операционная система</label>
+                            <input type="text" name="OS" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Цена</label>
+                            <input type="number" name="Price" step="0.01" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Год выпуска</label>
+                            <input type="number" name="ReleaseYear" class="form-control" required />
+                        </div>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="KeyboardBackLight" />
+                            <label class="form-check-label">Подсветка клавиатуры</label>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="HasWebcam" />
+                            <label class="form-check-label">Есть вебкамера</label>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
