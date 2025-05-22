@@ -49,7 +49,7 @@ public class Laptop
     public bool HasWebcam { get; set; }
     
     [DataType(DataType.Currency)]
-    public float Price { get; set; }
+    public decimal Price { get; set; }
     
     public string ImageUrl { get; set; }
     public int StockQuantity { get; set; }

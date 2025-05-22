@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\css\\Style.css"
     },
     {
+      "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\images\\laptops\\65dca3df-90a8-44ad-85cd-24492f427f62.jpg",
+      "PackagePath": "staticwebassets\\images\\laptops\\65dca3df-90a8-44ad-85cd-24492f427f62.jpg"
+    },
+    {
+      "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\images\\laptops\\bfa2cc1c-6158-4a1f-9ea5-c2fa4765f879.jpg",
+      "PackagePath": "staticwebassets\\images\\laptops\\bfa2cc1c-6158-4a1f-9ea5-c2fa4765f879.jpg"
+    },
+    {
       "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\laptopAsusRog.jpg",
       "PackagePath": "staticwebassets\\img\\laptopAsusRog.jpg"
     },

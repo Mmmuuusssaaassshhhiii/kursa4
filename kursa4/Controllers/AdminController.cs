@@ -7,10 +7,13 @@ namespace kursa4.Controllers;
 public class AdminController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
-    public AdminController(ApplicationDbContext context)
+
+    public AdminController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
     {
         _context = context;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     public async Task<IActionResult> Index()
@@ -65,16 +68,27 @@ public class AdminController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddLaptop(Laptop laptop)
+    public async Task<IActionResult> AddLaptop(Laptop laptop, IFormFile ImageFile)
     {
-        if (!ModelState.IsValid)
+        if (ImageFile != null && ImageFile.Length > 0)
         {
-            return RedirectToAction("Laptops");
-        }
-        
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "laptops");
+            Directory.CreateDirectory(uploadsFolder); // на случай если папки нет
+            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageFile.FileName);
+            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await ImageFile.CopyToAsync(stream);
+            }
+
+            laptop.ImageUrl = "/img/" + uniqueFileName;
+        }   
+
+        // сохранить ноутбук в базу данных
         _context.Laptops.Add(laptop);
         await _context.SaveChangesAsync();
-        
-        return RedirectToAction("Laptops");
+
+        return RedirectToAction("Index");
     }
 }

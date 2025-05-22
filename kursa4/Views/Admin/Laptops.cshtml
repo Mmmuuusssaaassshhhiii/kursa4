@@ -66,7 +66,7 @@
     <div class="modal fade" id="addLaptopModal" tabindex="-1" aria-labelledby="addLaptopModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <form asp-action="AddLaptop" asp-controller="Admin" method="post">
+                <form asp-action="AddLaptop" asp-controller="Admin" method="post" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h5 class="modal-title" id="addLaptopModalLabel">Добавить ноутбук</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -158,6 +158,61 @@
                         <div class="mb-3">
                             <label class="form-label">Год выпуска</label>
                             <input type="number" name="ReleaseYear" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Объём батареи (Вт⋅ч)</label>
+                            <input type="number" name="BatteryWh" class="form-control" step="1" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Размер экрана (дюймы)</label>
+                            <input type="number" name="ScreenSize" class="form-control" step="0.1" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Частота обновления (Гц)</label>
+                            <input type="number" name="RefreshRate" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Разрешение экрана</label>
+                            <input type="text" name="Resolution" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Вес (кг)</label>
+                            <input type="number" name="Weight" class="form-control" step="0.01" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Размеры (Ш × В × Г, см)</label>
+                            <div class="row g-2">
+                                <div class="col">
+                                    <input type="number" name="Width" class="form-control" placeholder="Ширина" step="0.1" required />
+                                </div>
+                                <div class="col">
+                                    <input type="number" name="Height" class="form-control" placeholder="Высота" step="0.1" required />
+                                </div>
+                                <div class="col">
+                                    <input type="number" name="Depth" class="form-control" placeholder="Глубина" step="0.1" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Изображение</label>
+                            <input type="file" name="ImageFile" class="form-control" accept="image/*" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Количество в наличии</label>
+                            <input type="number" name="StockQuantity" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Описание</label>
+                            <textarea name="Description" class="form-control" rows="3"></textarea>
                         </div>
 
                         <div class="form-check mb-2">
