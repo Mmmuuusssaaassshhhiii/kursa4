@@ -55,12 +55,39 @@
                 <td>@laptop.ReleaseYear</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@laptop.Id" class="btn btn-sm btn-warning">Изменить</a>
-                    <a asp-action="Delete" asp-route-id="@laptop.Id" class="btn btn-sm btn-danger">Удалить</a>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#confirmDeleteModal" data-laptop-id="@laptop.Id"
+                            data-laptop-name="@($"{laptop.Brand?.Name}  {laptop.Model}")">
+                        Удалить
+                    </button>
                 </td>
             </tr>
         }
         </tbody>
     </table>
+
+    <!-- Модалка подтверждения удаления -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="deleteForm" asp-controller="Admin" asp-action="DeleteLaptop" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Подтвердите удаление</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        Вы уверены, что хотите удалить <strong id="deleteLaptopName"></strong>?
+                        <input type="hidden" name="id" id="deleteLaptopId" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Модальное окно добавления -->
     <div class="modal fade" id="addLaptopModal" tabindex="-1" aria-labelledby="addLaptopModalLabel" aria-hidden="true">
@@ -234,4 +261,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var deleteModal = document.getElementById('confirmDeleteModal');
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var laptopId = button.getAttribute('data-laptop-id');
+            var laptopName = button.getAttribute('data-laptop-name');
+
+            var modalTitle = deleteModal.querySelector('#deleteLaptopName');
+            var modalInput = deleteModal.querySelector('#deleteLaptopId');
+
+            modalTitle.textContent = laptopName;
+            modalInput.value = laptopId;
+        });
+    </script>
 </div>

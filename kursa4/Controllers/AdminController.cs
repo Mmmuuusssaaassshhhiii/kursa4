@@ -130,4 +130,33 @@ public async Task<IActionResult> AddLaptop(IFormCollection form, IFormFile Image
 
     return RedirectToAction("Index");
 }
+
+    [HttpGet]
+    public IActionResult DeleteLaptop(int id)
+    {
+        var laptop = _context.Laptops
+            .Include(l => l.Brand)
+            .FirstOrDefault(l => l.Id == id);
+
+        if (laptop == null)
+        {
+            return NotFound();
+        }
+        
+        return View(laptop);
+    }
+
+    [HttpPost, ActionName("DeleteLaptop")]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeleteLaptopConfirmed(int id)
+    {
+        var laptop = _context.Laptops.Find(id);
+        if (laptop != null)
+        {
+            _context.Laptops.Remove(laptop);
+            _context.SaveChanges();
+        }
+        
+        return RedirectToAction("Laptops");
+    }
 }
