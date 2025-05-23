@@ -1,3 +1,4 @@
+using System.Globalization;
 using kursa4.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -67,28 +68,66 @@ public class AdminController : Controller
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddLaptop(Laptop laptop, IFormFile ImageFile)
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> AddLaptop(IFormCollection form, IFormFile ImageFile)
+{
+    var laptop = new Laptop();
+
+    // 1. Парсим поля вручную из form
+    laptop.Model = form["Model"];
+    laptop.BrandId = int.Parse(form["BrandId"]);
+    laptop.CategoryId = int.Parse(form["CategoryId"]);
+    laptop.CPUId = int.Parse(form["CPUId"]);
+    laptop.GPUId = int.Parse(form["GPUId"]);
+    laptop.RamId = int.Parse(form["RamId"]);
+    laptop.StorageId = int.Parse(form["StorageId"]);
+    laptop.OS = form["OS"];
+    laptop.ReleaseYear = int.Parse(form["ReleaseYear"]);
+    laptop.BatteryWh = int.Parse(form["BatteryWh"]);
+    laptop.ScreenSize = float.Parse(form["ScreenSize"], CultureInfo.InvariantCulture);
+    laptop.RefreshRate = int.Parse(form["RefreshRate"]);
+    laptop.Resolution = form["Resolution"];
+    laptop.Width = float.Parse(form["Width"], CultureInfo.InvariantCulture);
+    laptop.Height = float.Parse(form["Height"], CultureInfo.InvariantCulture);
+    laptop.Depth = float.Parse(form["Depth"], CultureInfo.InvariantCulture);
+    laptop.Weight = float.Parse(form["Weight"], CultureInfo.InvariantCulture);
+    laptop.KeyboardBackLight = form["KeyboardBackLight"].Contains("true");
+    laptop.HasWebcam = form["HasWebcam"].Contains("true");
+    laptop.StockQuantity = int.Parse(form["StockQuantity"]);
+    laptop.Description = form["Description"];
+
+    // 2. Парсим цену — заменяем запятую на точку и используем инвариантную культуру
+    var priceStr = form["Price"].ToString().Replace(',', '.');
+    if (decimal.TryParse(priceStr, NumberStyles.Any, CultureInfo.InvariantCulture, out var price))
     {
-        if (ImageFile != null && ImageFile.Length > 0)
-        {
-            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "laptops");
-            Directory.CreateDirectory(uploadsFolder); // на случай если папки нет
-            var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageFile.FileName);
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await ImageFile.CopyToAsync(stream);
-            }
-
-            laptop.ImageUrl = "/img/" + uniqueFileName;
-        }   
-
-        // сохранить ноутбук в базу данных
-        _context.Laptops.Add(laptop);
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction("Index");
+        laptop.Price = price;
     }
+    else
+    {
+        ModelState.AddModelError("Price", "Неверный формат цены.");
+        return View(); // или верни на форму с ошибкой
+    }
+
+    // 3. Обработка изображения
+    if (ImageFile != null && ImageFile.Length > 0)
+    {
+        var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "laptops");
+        Directory.CreateDirectory(uploadsFolder); // на случай если папки нет
+        var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageFile.FileName);
+        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await ImageFile.CopyToAsync(stream);
+        }
+
+        laptop.ImageUrl = "/images/laptops/" + uniqueFileName;
+    }
+
+    // 4. Сохраняем в БД
+    _context.Laptops.Add(laptop);
+    await _context.SaveChangesAsync();
+
+    return RedirectToAction("Index");
+}
 }

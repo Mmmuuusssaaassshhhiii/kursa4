@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace kursa4.Models;
 
@@ -48,6 +49,7 @@ public class Laptop
     public bool KeyboardBackLight { get; set; }
     public bool HasWebcam { get; set; }
     
+    [Column(TypeName = "decimal(18,2)")]
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
     

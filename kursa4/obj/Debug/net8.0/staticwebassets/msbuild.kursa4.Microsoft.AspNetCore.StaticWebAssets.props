@@ -18,6 +18,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Style.css'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\0d5747e6-ba62-42f8-bcdf-7729949fad2c.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>kursa4</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/kursa4</BasePath>
+      <RelativePath>images/laptops/0d5747e6-ba62-42f8-bcdf-7729949fad2c.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>s3xdpoe1st</Fingerprint>
+      <Integrity>KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\0d5747e6-ba62-42f8-bcdf-7729949fad2c.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\5064f016-9d29-423b-86ba-089f6f015ce5.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>kursa4</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/kursa4</BasePath>
+      <RelativePath>images/laptops/5064f016-9d29-423b-86ba-089f6f015ce5.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>s3xdpoe1st</Fingerprint>
+      <Integrity>KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\5064f016-9d29-423b-86ba-089f6f015ce5.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\65dca3df-90a8-44ad-85cd-24492f427f62.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>kursa4</SourceId>
@@ -36,6 +72,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\65dca3df-90a8-44ad-85cd-24492f427f62.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\6fe48cb5-cf85-490d-a32a-59a19d7eccba.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>kursa4</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/kursa4</BasePath>
+      <RelativePath>images/laptops/6fe48cb5-cf85-490d-a32a-59a19d7eccba.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>s3xdpoe1st</Fingerprint>
+      <Integrity>KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\6fe48cb5-cf85-490d-a32a-59a19d7eccba.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\beb493bd-329d-4025-8383-df12619366fa.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>kursa4</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/kursa4</BasePath>
+      <RelativePath>images/laptops/beb493bd-329d-4025-8383-df12619366fa.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>s3xdpoe1st</Fingerprint>
+      <Integrity>KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\beb493bd-329d-4025-8383-df12619366fa.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\bfa2cc1c-6158-4a1f-9ea5-c2fa4765f879.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>kursa4</SourceId>
@@ -53,6 +125,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\bfa2cc1c-6158-4a1f-9ea5-c2fa4765f879.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\f5ab0a32-944d-4ac1-9cc5-feb28bd6f08b.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>kursa4</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/kursa4</BasePath>
+      <RelativePath>images/laptops/f5ab0a32-944d-4ac1-9cc5-feb28bd6f08b.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>s3xdpoe1st</Fingerprint>
+      <Integrity>KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\f5ab0a32-944d-4ac1-9cc5-feb28bd6f08b.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\laptopAsusRog.jpg'))">
       <SourceType>Package</SourceType>
