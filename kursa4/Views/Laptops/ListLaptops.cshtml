@@ -125,12 +125,27 @@
                     <!-- Описание -->
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">@laptop.Model</h5>
+                            <h5 class="card-title">@($"{laptop.Category?.Name} ноутбук {laptop.Brand?.Name} {laptop.Model}")</h5>
                             <p class="card-text mb-1">
-                                <strong>Цена:</strong> @laptop.Price.ToString("c")
+                                <strong>Экран: </strong>@($"{laptop.ScreenSize}'', {laptop.Resolution}, {laptop.RefreshRate} Гц")
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Процессор: </strong>@laptop.CPU?.Name
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>ОЗУ: </strong>@($"{laptop.RAM?.SizeGb} Гб {laptop.RAM.Type}")
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Накопитель: </strong>@($"{laptop.Storage.SizeGb} Гб {laptop.Storage.Type}")
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Видеокарта: </strong>@laptop.GPU?.Name
                             </p>
                             <p class="card-text text-muted">
                                 @laptop.Description
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Цена:</strong> @laptop.Price.ToString("c")
                             </p>
                             <a href="/Laptops/Details/@laptop.Id" class="btn btn-outline-primary">Подробнее</a>
                         </div>
