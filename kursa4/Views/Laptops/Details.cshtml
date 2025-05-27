@@ -1,31 +1,157 @@
+@using Microsoft.AspNetCore.Authorization
 @model kursa4.Models.Laptop
 
 @{
     ViewData["Title"] = $"Ноутбук {Model.Brand?.Name} {Model.Model}";
+    var avgRating = Model.Reviews?.Any() == true ? Model.Reviews.Average(r => r.Rating) : 0;
+    var sessionEmail = Context.Session.GetString("UserEmail");
+    var isAuthenticated = !string.IsNullOrEmpty(sessionEmail);
+    var userName = sessionEmail ?? "";
 }
 
 <h2>@ViewData["Title"]</h2>
 
-<div class="card shadow-sm p-3">
+<div class="card shadow-sm p-3 mb-4">
     <div class="row">
         <div class="col-md-5">
             <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Model">
         </div>
         <div class="col-md-7">
-            <h4>@($"{Model.Category?.Name} ноутбук")</h4>
-            <p><strong>Модель:</strong> @Model.Model</p>
-            <p><strong>Процессор:</strong> @Model.CPU?.Name</p>
-            <p><strong>Оперативная память:</strong> @($"{Model.RAM?.SizeGb} ГБ {Model.RAM?.Type}")</p>
-            <p><strong>Хранилище:</strong> @($"{Model.Storage?.SizeGb} ГБ {Model.Storage?.Type}")</p>
-            <p><strong>Видеокарта:</strong> @Model.GPU?.Name</p>
-            <p><strong>Операционная система:</strong> @Model.OS</p>
-            <p><strong>Экран:</strong> @($"{Model.ScreenSize}'' {Model.Resolution}, {Model.RefreshRate} Гц")</p>
-            <p><strong>Вес:</strong> @Model.Weight кг</p>
-            <p><strong>Габариты:</strong> @($"{Model.Width} x {Model.Height} x {Model.Depth} см")</p>
-            <p><strong>Подсветка клавиатуры:</strong> @(Model.KeyboardBackLight ? "Да" : "Нет")</p>
-            <p><strong>Вебкамера:</strong> @(Model.HasWebcam ? "Да" : "Нет")</p>
+            <!-- ...характеристики... -->
             <p><strong>Цена:</strong> @Model.Price.ToString("c")</p>
-            <p><strong>Описание:</strong> @Model.Description</p>
+
+            <div class="mt-3">
+                <strong>Средний рейтинг:</strong> @($"{avgRating:F1} / 5")
+                <div>
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="text-warning fs-4">@((i <= avgRating) ? "★" : "☆")</span>
+                    }
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button class="btn btn-outline-primary" onclick="handleCart(@Model.Id)">Добавить в корзину</button>
+                <button class="btn btn-success" onclick="handleBuy(@Model.Id)">Купить сейчас</button>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Отзывы -->
+<div class="card shadow-sm p-3 mb-4">
+    <h4>Отзывы</h4>
+
+    @if (Model.Reviews?.Any() == true)
+    {
+        foreach (var review in Model.Reviews.OrderByDescending(r => r.CreatedAt))
+        {
+            <div class="mb-3 border-bottom pb-2">
+                <div>
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="text-warning">@((i <= review.Rating) ? "★" : "☆")</span>
+                    }
+                </div>
+                <p class="mb-1"><strong>@review.User?.FullName</strong> — <small>@review.CreatedAt.ToShortDateString()</small></p>
+                <p>@review.Content</p>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-muted">Отзывов пока нет.</p>
+    }
+
+    @if (isAuthenticated)
+    {
+        <form asp-controller="Review" asp-action="Add" method="post" class="mt-3">
+            <input type="hidden" name="LaptopId" value="@Model.Id" />
+            <input type="hidden" name="UserName" value="@userName" />
+
+            <div class="mb-2">
+                <label class="form-label">Оценка:</label>
+                <div id="rating-stars" class="mb-2">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <span class="star fs-4 text-secondary" data-value="@i" style="cursor: pointer;">★</span>
+                    }
+                </div>
+                <input type="hidden" name="Rating" id="rating-input" required />
+            </div>
+
+            <div class="mb-2">
+                <label class="form-label">Комментарий</label>
+                <textarea name="Comment" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+        </form>
+    }
+    else
+    {
+        <p class="text-muted">Чтобы оставить отзыв, <a href="/Account/Login">войдите</a>.</p>
+    }
+</div>
+
+<!-- Модалки -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Уведомление</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body" id="modalMessage"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const isAuthenticated = @Html.Raw(isAuthenticated.ToString().ToLower());
+
+    // Звезды для рейтинга
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function () {
+            const val = this.getAttribute('data-value');
+            document.getElementById('rating-input').value = val;
+            document.querySelectorAll('.star').forEach(s => {
+                s.classList.remove('text-warning');
+                s.classList.add('text-secondary');
+            });
+            for (let i = 0; i < val; i++) {
+                document.querySelectorAll('.star')[i].classList.remove('text-secondary');
+                document.querySelectorAll('.star')[i].classList.add('text-warning');
+            }
+        });
+    });
+
+    // Кнопка "Добавить в корзину"
+    function handleCart(id) {
+        if (!isAuthenticated) {
+            showModal('Пожалуйста, <a href="/Account/Login">авторизуйтесь</a>, чтобы добавить товар в корзину.');
+            return;
+        }
+        fetch(`/Cart/AddToCart?id=${id}`, { method: 'POST' })
+            .then(response => {
+                if (response.ok) {
+                    showModal('Товар добавлен в корзину!');
+                }
+            });
+    }
+
+    // Кнопка "Купить сейчас"
+    function handleBuy(id) {
+        if (!isAuthenticated) {
+            showModal('Пожалуйста, <a href="/Account/Login">войдите</a>, чтобы оформить заказ.');
+            return;
+        }
+        window.location.href = `/Order/BuyNow?id=${id}`;
+    }
+
+    // Модальное окно
+    function showModal(message) {
+        document.getElementById('modalMessage').innerHTML = message;
+        new bootstrap.Modal(document.getElementById('feedbackModal')).show();
+    }
+</script>

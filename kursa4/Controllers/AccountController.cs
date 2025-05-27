@@ -116,6 +116,7 @@ namespace kursa4.Controllers
             if (user != null)
             {
                 HttpContext.Session.SetString("UserEmail", user.Email);
+                HttpContext.Session.SetString("UserName", user.FullName);
                 HttpContext.Session.SetString("UserRole", user.Role);
 
                 if (user.Role == "Admin")

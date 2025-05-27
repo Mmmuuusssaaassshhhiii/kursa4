@@ -66,6 +66,8 @@ public class LaptopsController : Controller
             .Include(l => l.GPU)
             .Include(l => l.RAM)
             .Include(l => l.Storage)
+            .Include(l => l.Reviews)
+            .ThenInclude(r => r.User)
             .FirstOrDefault(l => l.Id == id);
 
         if (laptop == null)
