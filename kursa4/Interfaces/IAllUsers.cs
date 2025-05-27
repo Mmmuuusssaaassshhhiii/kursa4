@@ -15,5 +15,5 @@ public interface IAllUsers
     // Дополнительные методы:
     bool Register(string email, string password, string fullName, string phoneNumber);
     User Login(string email, string password);
-    void Logout(int userId); // если ведёшь учёт сессий
+    void Logout(int userId);
 }

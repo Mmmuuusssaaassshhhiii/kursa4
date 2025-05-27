@@ -1,15 +1,16 @@
 @using Microsoft.AspNetCore.Authorization
+@using Microsoft.EntityFrameworkCore
 @model kursa4.Models.Laptop
 
 @{
-    ViewData["Title"] = $"Ноутбук {Model.Brand?.Name} {Model.Model}";
+    ViewData["Title"] = $"Ноутбук {Model.Category?.Name} {Model.Brand?.Name} {Model.Model}";
     var avgRating = Model.Reviews?.Any() == true ? Model.Reviews.Average(r => r.Rating) : 0;
     var sessionEmail = Context.Session.GetString("UserEmail");
     var isAuthenticated = !string.IsNullOrEmpty(sessionEmail);
     var userName = sessionEmail ?? "";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2>@($"Ноутбук {Model.Category?.Name} {Model.Brand?.Name} {Model.Model}")</h2>
 
 <div class="card shadow-sm p-3 mb-4">
     <div class="row">
@@ -17,22 +18,145 @@
             <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Model">
         </div>
         <div class="col-md-7">
-            <!-- ...характеристики... -->
-            <p><strong>Цена:</strong> @Model.Price.ToString("c")</p>
-
             <div class="mt-3">
-                <strong>Средний рейтинг:</strong> @($"{avgRating:F1} / 5")
+                
                 <div>
                     @for (int i = 1; i <= 5; i++)
                     {
                         <span class="text-warning fs-4">@((i <= avgRating) ? "★" : "☆")</span>
                     }
                 </div>
+                <!-- ...характеристики... -->
+                <p>@($"{Model.ScreenSize}'' {Model.Resolution}, {Model.RefreshRate} Гц, {Model.CPU?.Name}, {Model.RAM.Type} {Model.RAM.SizeGb} ГБ, {Model.Storage.Type} {Model.Storage.SizeGb} ГБ, {Model.GPU?.Name}, {Model.OS}, аккумулятор {Model.BatteryWh} Вт*ч")</p>
+                <p><h5><strong>@Model.Price.ToString("c")</strong></h5></p>
             </div>
 
             <div class="mt-4 d-flex gap-2">
                 <button class="btn btn-outline-primary" onclick="handleCart(@Model.Id)">Добавить в корзину</button>
                 <button class="btn btn-success" onclick="handleBuy(@Model.Id)">Купить сейчас</button>
+            </div>
+            
+            <div class="mt-4">
+                <h5 class="mb-3">Характеристики</h5>
+                <table class="table table-bordered table-sm">
+                    <tbody>
+                    <tr class="table-secondary">
+                        <th colspan="2">Общая информация</th>
+                    </tr>
+                    <tr>
+                        <td>Дата выхода на рынок</td>
+                        <td>@($"{Model.ReleaseYear} г.")</td>
+                    </tr>
+                    <tr>
+                        <td>Описание</td>
+                        <td>@Model.Description</td>
+                    </tr>
+                    <tr>
+                        <td>Производитель</td>
+                        <td>@Model.Brand?.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Категория</td>
+                        <td>@Model.Category?.Name</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Процессор</th>
+                    </tr>
+                    <tr>
+                        <td>Модель</td>
+                        <td>@Model.CPU?.Name</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Размеры и вес</th>
+                    </tr>
+                    <tr>
+                        <td>Ширина</td>
+                        <td>@($"{Model.Width} мм")</td>
+                    </tr>
+                    <tr>
+                        <td>Глубина</td>
+                        <td>@($"{Model.Depth} мм")</td>
+                    </tr>
+                    <tr>
+                        <td>Высота</td>
+                        <td>@($"{Model.Height} мм")</td>
+                    </tr>
+                    <tr>
+                        <td>Вес</td>
+                        <td>@($"{Model.Weight} г")</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Экран</th>
+                    </tr>
+                    <tr>
+                        <td>Диагональ экрана</td>
+                        <td>@($"{Model.ScreenSize}''")</td>
+                    </tr>
+                    <tr>
+                        <td>Разрешение экрана</td>
+                        <td>@($"{Model.Resolution}")</td>
+                    </tr>
+                    <tr>
+                        <td>Частота матрицы</td>
+                        <td>@($"{Model.RefreshRate} Гц")</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Оперативная память</th>
+                    </tr>
+                    <tr>
+                        <td>Тип оперативной память</td>
+                        <td>@Model.RAM?.Type</td>
+                    </tr>
+                    <tr>
+                        <td>Объём памяти</td>
+                        <td>@($"{Model.RAM?.SizeGb} ГБ")</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Хранение данных</th>
+                    </tr>
+                    <tr>
+                        <td>Тип накопителя</td>
+                        <td>@Model.Storage?.Type</td>
+                    </tr>
+                    <tr>
+                        <td>Ёмкость накопителя</td>
+                        <td>@($"{Model.Storage?.SizeGb} ГБ")</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Графика</th>
+                    </tr>
+                    <tr>
+                        <td>Видеокарта</td>
+                        <td>@Model.GPU?.Name</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Наличик веб-камеры</th>
+                    </tr>
+                    <tr>
+                        <td>@Model.HasWebcam</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Наличик подсветки клавиатуры</th>
+                    </tr>
+                    <tr>
+                        <td>@Model.KeyboardBackLight</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Аккумулятор</th>
+                    </tr>
+                    <tr>
+                        <td>Запас энергии</td>
+                        <td>@($"{Model.BatteryWh} Вт*ч")</td>
+                    </tr>
+                    <tr class="table-secondary">
+                        <th colspan="2">Комплектация</th>
+                    </tr>
+                    <tr>
+                        <td>Операционная система</td>
+                        <td>@Model.OS</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
