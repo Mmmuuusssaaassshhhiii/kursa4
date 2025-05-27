@@ -1,11 +1,14 @@
 using kursa4.Interfaces;
 using kursa4.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace kursa4.Controllers;
 
 public class LaptopsController : Controller
 {
+    
+    private readonly ApplicationDbContext _context;
     private readonly IAllLaptops _allLaptops;
     private readonly ILaptopsCategory _laptopsCategory;
     private readonly ILaptopsBrand _laptopsBrand;
@@ -14,7 +17,9 @@ public class LaptopsController : Controller
     private readonly ILaptopsRam _laptopsRam;
     private readonly ILaptopsStorage _laptopsStorage;
 
-    public LaptopsController(IAllLaptops iAllLaptops,
+    public LaptopsController(
+        ApplicationDbContext context,
+        IAllLaptops iAllLaptops,
         ILaptopsCategory iLaptopsCategory,
         ILaptopsBrand iLaptopsBrand,
         ILaptopsCpu iLaptopCpu,
@@ -22,6 +27,7 @@ public class LaptopsController : Controller
         ILaptopsRam iLaptopsRam,
         ILaptopsStorage iLaptopsStorage)
     {
+        _context = context;
         _allLaptops = iAllLaptops;
         _laptopsCategory = iLaptopsCategory;
         _laptopsBrand = iLaptopsBrand;
@@ -33,7 +39,7 @@ public class LaptopsController : Controller
 
     public ViewResult ListLaptops()
     {
-        ViewBag.Title = "Страница с ноутбуками";
+        ViewBag.Title = "Каталог";
 
         var viewModel = new LaptopsListViewModel
         {
@@ -49,5 +55,24 @@ public class LaptopsController : Controller
         ViewBag.Storages = _laptopsStorage.AllStorages;
 
         return View(viewModel);
+    }
+
+    public IActionResult Details(int id)
+    {
+        var laptop = _context.Laptops
+            .Include(l => l.Category)
+            .Include(l => l.Brand)
+            .Include(l => l.CPU)
+            .Include(l => l.GPU)
+            .Include(l => l.RAM)
+            .Include(l => l.Storage)
+            .FirstOrDefault(l => l.Id == id);
+
+        if (laptop == null)
+        {
+            return NotFound();
+        }
+        
+        return View(laptop);
     }
 }

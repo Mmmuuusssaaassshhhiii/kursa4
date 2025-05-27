@@ -1,0 +1,31 @@
+@model kursa4.Models.Laptop
+
+@{
+    ViewData["Title"] = $"Ноутбук {Model.Brand?.Name} {Model.Model}";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card shadow-sm p-3">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="@Model.ImageUrl" class="img-fluid rounded" alt="@Model.Model">
+        </div>
+        <div class="col-md-7">
+            <h4>@($"{Model.Category?.Name} ноутбук")</h4>
+            <p><strong>Модель:</strong> @Model.Model</p>
+            <p><strong>Процессор:</strong> @Model.CPU?.Name</p>
+            <p><strong>Оперативная память:</strong> @($"{Model.RAM?.SizeGb} ГБ {Model.RAM?.Type}")</p>
+            <p><strong>Хранилище:</strong> @($"{Model.Storage?.SizeGb} ГБ {Model.Storage?.Type}")</p>
+            <p><strong>Видеокарта:</strong> @Model.GPU?.Name</p>
+            <p><strong>Операционная система:</strong> @Model.OS</p>
+            <p><strong>Экран:</strong> @($"{Model.ScreenSize}'' {Model.Resolution}, {Model.RefreshRate} Гц")</p>
+            <p><strong>Вес:</strong> @Model.Weight кг</p>
+            <p><strong>Габариты:</strong> @($"{Model.Width} x {Model.Height} x {Model.Depth} см")</p>
+            <p><strong>Подсветка клавиатуры:</strong> @(Model.KeyboardBackLight ? "Да" : "Нет")</p>
+            <p><strong>Вебкамера:</strong> @(Model.HasWebcam ? "Да" : "Нет")</p>
+            <p><strong>Цена:</strong> @Model.Price.ToString("c")</p>
+            <p><strong>Описание:</strong> @Model.Description</p>
+        </div>
+    </div>
+</div>

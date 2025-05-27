@@ -147,7 +147,9 @@
                             <p class="card-text mb-1">
                                 <strong>Цена:</strong> @laptop.Price.ToString("c")
                             </p>
-                            <a href="/Laptops/Details/@laptop.Id" class="btn btn-outline-primary">Подробнее</a>
+                            <a asp-controller="Laptops" asp-action="Details" asp-route-id="@laptop.Id" class="btn btn-outline-primary">
+                                Подробнее
+                            </a>
                         </div>
                     </div>
                 </div>
