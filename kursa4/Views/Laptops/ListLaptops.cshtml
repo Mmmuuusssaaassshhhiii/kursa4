@@ -37,61 +37,67 @@
 
                 <div class="mb-3">
                     <label class="form-label">Процессор</label>
-                    <select class="form-select" name="category">
+                    <select class="form-select" name="CPU">
                         <option value="">Все</option>
-                        <option value="gaming">Игровые</option>
-                        <option value="ultrabook">Ультрабуки</option>
-                        <option value="business">Бизнес</option>
+                        @foreach (var cpu in (IEnumerable<kursa4.Models.CPU>)ViewBag.CPUs)
+                        {
+                            <option value="@cpu.Name">@cpu.Name</option>
+                        }
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Видеокарта</label>
-                    <select class="form-select" name="category">
+                    <select class="form-select" name="GPU">
                         <option value="">Все</option>
-                        <option value="gaming">Игровые</option>
-                        <option value="ultrabook">Ультрабуки</option>
-                        <option value="business">Бизнес</option>
+                        @foreach (var gpu in (IEnumerable<kursa4.Models.GPU>)ViewBag.GPUs)
+                        {
+                            <option value="@gpu.Name">@gpu.Name</option>
+                        }
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Тип оперативной память</label>
-                    <select class="form-select" name="category">
+                    <label class="form-label">Тип оперативной памяти</label>
+                    <select class="form-select" name="ramType">
                         <option value="">Все</option>
-                        <option value="gaming">Игровые</option>
-                        <option value="ultrabook">Ультрабуки</option>
-                        <option value="business">Бизнес</option>
+                        @foreach (var type in ((IEnumerable<kursa4.Models.RAM>)ViewBag.RAMs).Select(r => r.Type).Distinct())
+                        {
+                            <option value="@type">@type</option>
+                        }
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Размер оперативной памяти</label>
-                    <select class="form-select" name="category">
+                    <select class="form-select" name="ramSize">
                         <option value="">Все</option>
-                        <option value="gaming">Игровые</option>
-                        <option value="ultrabook">Ультрабуки</option>
-                        <option value="business">Бизнес</option>
+                        @foreach (var size in ((IEnumerable<kursa4.Models.RAM>)ViewBag.RAMs).Select(r => r.SizeGb).Distinct().OrderBy(s => s))
+                        {
+                            <option value="@size">@size ГБ</option>
+                        }
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Тип хранилища</label>
-                    <select class="form-select" name="category">
+                    <select class="form-select" name="storageType">
                         <option value="">Все</option>
-                        <option value="gaming">Игровые</option>
-                        <option value="ultrabook">Ультрабуки</option>
-                        <option value="business">Бизнес</option>
+                        @foreach (var type in ((IEnumerable<kursa4.Models.Storage>)ViewBag.Storages).Select(s => s.Type).Distinct())
+                        {
+                            <option value="@type">@type</option>
+                        }
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Размер хранилища</label>
-                    <select class="form-select" name="category">
+                    <select class="form-select" name="storageSize">
                         <option value="">Все</option>
-                        <option value="gaming">Игровые</option>
-                        <option value="ultrabook">Ультрабуки</option>
-                        <option value="business">Бизнес</option>
+                        @foreach (var size in ((IEnumerable<kursa4.Models.Storage>)ViewBag.Storages).Select(r => r.SizeGb).Distinct().OrderBy(s => s))
+                        {
+                            <option value="@size">@size ГБ</option>
+                        }
                     </select>
                 </div>
 
@@ -125,7 +131,7 @@
                     <!-- Описание -->
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">@($"{laptop.Category?.Name} ноутбук {laptop.Brand?.Name} {laptop.Model}")</h5>
+                            <h5 class="card-title">@($"Ноутбук {laptop.Category?.Name} {laptop.Brand?.Name} {laptop.Model}")</h5>
                             <p class="card-text mb-1">
                                 <strong>Экран: </strong>@($"{laptop.ScreenSize}'', {laptop.Resolution}, {laptop.RefreshRate} Гц")
                             </p>
