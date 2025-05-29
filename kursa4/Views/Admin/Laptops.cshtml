@@ -44,11 +44,7 @@
                 <td>@($"{laptop.RAM?.SizeGb} ГБ / {laptop.Storage?.SizeGb} ГБ")</td>
                 <td>@($"{laptop.ScreenSize}\" / {laptop.Resolution}")</td>
                 <td>@($"{laptop.RefreshRate} Гц / {laptop.BatteryWh} Втч")</td>
-                <td>@($"{laptop.Width}×{laptop.Height}×{laptop.Depth} см / {laptop.Weight} кг")</td>
-                <td>
-                    @(laptop.KeyboardBackLight ? "Подсветка" : "-") /
-                    @(laptop.HasWebcam ? "Камера" : "-")
-                </td>
+                <td>@($"{laptop.Width}×{laptop.Height}×{laptop.Depth} мм / {laptop.Weight} г")</td>
                 <td>@laptop.OS</td>
                 <td>@($"{laptop.Price:C}")</td>
                 <td>@laptop.StockQuantity</td>
@@ -208,12 +204,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Вес (кг)</label>
+                            <label class="form-label">Вес (г)</label>
                             <input type="number" name="Weight" class="form-control" step="0.01" required />
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Размеры (Ш × В × Г, см)</label>
+                            <label class="form-label">Размеры (Ш × В × Г, мм)</label>
                             <div class="row g-2">
                                 <div class="col">
                                     <input type="number" name="Width" class="form-control" placeholder="Ширина" step="0.1" required />
@@ -240,16 +236,6 @@
                         <div class="mb-3">
                             <label class="form-label">Описание</label>
                             <textarea name="Description" class="form-control" rows="3"></textarea>
-                        </div>
-
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" name="KeyboardBackLight" />
-                            <label class="form-check-label">Подсветка клавиатуры</label>
-                        </div>
-
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" name="HasWebcam" />
-                            <label class="form-check-label">Есть вебкамера</label>
                         </div>
 
                     </div>

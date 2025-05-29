@@ -36,6 +36,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\0d5747e6-ba62-42f8-bcdf-7729949fad2c.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>kursa4</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/kursa4</BasePath>
+      <RelativePath>images/laptops/20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>s3xdpoe1st</Fingerprint>
+      <Integrity>KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\laptops\50583a55-958c-4696-8264-e2468528f03f.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>kursa4</SourceId>

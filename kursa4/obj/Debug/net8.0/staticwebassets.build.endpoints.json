@@ -167,6 +167,88 @@
       ]
     },
     {
+      "Route": "images/laptops/20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.jpg",
+      "AssetFile": "images/laptops/20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122152"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 17:55:25 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE="
+        }
+      ]
+    },
+    {
+      "Route": "images/laptops/20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.s3xdpoe1st.jpg",
+      "AssetFile": "images/laptops/20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122152"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 28 May 2025 17:55:25 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s3xdpoe1st"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE="
+        },
+        {
+          "Name": "label",
+          "Value": "images/laptops/20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.jpg"
+        }
+      ]
+    },
+    {
       "Route": "images/laptops/50583a55-958c-4696-8264-e2468528f03f.jpg",
       "AssetFile": "images/laptops/50583a55-958c-4696-8264-e2468528f03f.jpg",
       "Selectors": [],

@@ -46,9 +46,6 @@ public class Laptop
     public float Height { get; set; }
     public float Depth { get; set; }
     
-    public bool KeyboardBackLight { get; set; }
-    public bool HasWebcam { get; set; }
-    
     [Column(TypeName = "decimal(18,2)")]
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }

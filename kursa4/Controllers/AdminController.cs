@@ -91,8 +91,6 @@ public async Task<IActionResult> AddLaptop(IFormCollection form, IFormFile Image
     laptop.Height = float.Parse(form["Height"], CultureInfo.InvariantCulture);
     laptop.Depth = float.Parse(form["Depth"], CultureInfo.InvariantCulture);
     laptop.Weight = float.Parse(form["Weight"], CultureInfo.InvariantCulture);
-    laptop.KeyboardBackLight = form["KeyboardBackLight"].Contains("true");
-    laptop.HasWebcam = form["HasWebcam"].Contains("true");
     laptop.StockQuantity = int.Parse(form["StockQuantity"]);
     laptop.Description = form["Description"];
 
