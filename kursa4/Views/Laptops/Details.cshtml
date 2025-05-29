@@ -35,118 +35,118 @@
                 <button class="btn btn-outline-primary" onclick="handleCart(@Model.Id)">Добавить в корзину</button>
                 <button class="btn btn-success" onclick="handleBuy(@Model.Id)">Купить сейчас</button>
             </div>
-            
-            <div class="mt-4">
-                <h5 class="mb-3">Характеристики</h5>
-                <table class="table table-bordered table-sm">
-                    <tbody>
-                    <tr class="table-secondary">
-                        <th colspan="2">Общая информация</th>
-                    </tr>
-                    <tr>
-                        <td>Дата выхода на рынок</td>
-                        <td>@($"{Model.ReleaseYear} г.")</td>
-                    </tr>
-                    <tr>
-                        <td>Описание</td>
-                        <td>@Model.Description</td>
-                    </tr>
-                    <tr>
-                        <td>Производитель</td>
-                        <td>@Model.Brand?.Name</td>
-                    </tr>
-                    <tr>
-                        <td>Категория</td>
-                        <td>@Model.Category?.Name</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="2">Процессор</th>
-                    </tr>
-                    <tr>
-                        <td>Модель</td>
-                        <td>@Model.CPU?.Name</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="2">Размеры и вес</th>
-                    </tr>
-                    <tr>
-                        <td>Ширина</td>
-                        <td>@($"{Model.Width} мм")</td>
-                    </tr>
-                    <tr>
-                        <td>Глубина</td>
-                        <td>@($"{Model.Depth} мм")</td>
-                    </tr>
-                    <tr>
-                        <td>Высота</td>
-                        <td>@($"{Model.Height} мм")</td>
-                    </tr>
-                    <tr>
-                        <td>Вес</td>
-                        <td>@($"{Model.Weight} г")</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="2">Экран</th>
-                    </tr>
-                    <tr>
-                        <td>Диагональ экрана</td>
-                        <td>@($"{Model.ScreenSize}''")</td>
-                    </tr>
-                    <tr>
-                        <td>Разрешение экрана</td>
-                        <td>@($"{Model.Resolution}")</td>
-                    </tr>
-                    <tr>
-                        <td>Частота матрицы</td>
-                        <td>@($"{Model.RefreshRate} Гц")</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="2">Оперативная память</th>
-                    </tr>
-                    <tr>
-                        <td>Тип оперативной память</td>
-                        <td>@Model.RAM?.Type</td>
-                    </tr>
-                    <tr>
-                        <td>Объём памяти</td>
-                        <td>@($"{Model.RAM?.SizeGb} ГБ")</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="2">Хранение данных</th>
-                    </tr>
-                    <tr>
-                        <td>Тип накопителя</td>
-                        <td>@Model.Storage?.Type</td>
-                    </tr>
-                    <tr>
-                        <td>Ёмкость накопителя</td>
-                        <td>@($"{Model.Storage?.SizeGb} ГБ")</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="2">Графика</th>
-                    </tr>
-                    <tr>
-                        <td>Видеокарта</td>
-                        <td>@Model.GPU?.Name</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="2">Аккумулятор</th>
-                    </tr>
-                    <tr>
-                        <td>Запас энергии</td>
-                        <td>@($"{Model.BatteryWh} Вт*ч")</td>
-                    </tr>
-                    <tr class="table-secondary">
-                        <th colspan="2">Комплектация</th>
-                    </tr>
-                    <tr>
-                        <td>Операционная система</td>
-                        <td>@Model.OS</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
+    </div>
+    
+    <div class="mt-4 mb-3">
+        <h5 class="mb-3">Характеристики</h5>
+        <table class="table table-bordered table-sm">
+            <tbody>
+            <tr class="table-secondary">
+                <th colspan="2">Общая информация</th>
+            </tr>
+            <tr>
+                <td>Дата выхода на рынок</td>
+                <td>@($"{Model.ReleaseYear} г.")</td>
+            </tr>
+            <tr>
+                <td>Описание</td>
+                <td>@Model.Description</td>
+            </tr>
+            <tr>
+                <td>Производитель</td>
+                <td>@Model.Brand?.Name</td>
+            </tr>
+            <tr>
+                <td>Категория</td>
+                <td>@Model.Category?.Name</td>
+            </tr>
+            <tr class="table-secondary">
+                <th colspan="2">Процессор</th>
+            </tr>
+            <tr>
+                <td>Модель</td>
+                <td>@Model.CPU?.Name</td>
+            </tr>
+            <tr class="table-secondary">
+                <th colspan="2">Размеры и вес</th>
+            </tr>
+            <tr>
+                <td>Ширина</td>
+                <td>@($"{Model.Width} мм")</td>
+            </tr>
+            <tr>
+                <td>Глубина</td>
+                <td>@($"{Model.Depth} мм")</td>
+            </tr>
+            <tr>
+                <td>Высота</td>
+                <td>@($"{Model.Height} мм")</td>
+            </tr>
+            <tr>
+                <td>Вес</td>
+                <td>@($"{Model.Weight} г")</td>
+            </tr>
+            <tr class="table-secondary">
+                <th colspan="2">Экран</th>
+            </tr>
+            <tr>
+                <td>Диагональ экрана</td>
+                <td>@($"{Model.ScreenSize}''")</td>
+            </tr>
+            <tr>
+                <td>Разрешение экрана</td>
+                <td>@($"{Model.Resolution}")</td>
+            </tr>
+            <tr>
+                <td>Частота матрицы</td>
+                <td>@($"{Model.RefreshRate} Гц")</td>
+            </tr>
+            <tr class="table-secondary">
+                <th colspan="2">Оперативная память</th>
+            </tr>
+            <tr>
+                <td>Тип оперативной память</td>
+                <td>@Model.RAM?.Type</td>
+            </tr>
+            <tr>
+                <td>Объём памяти</td>
+                <td>@($"{Model.RAM?.SizeGb} ГБ")</td>
+            </tr>
+            <tr class="table-secondary">
+                <th colspan="2">Хранение данных</th>
+            </tr>
+            <tr>
+                <td>Тип накопителя</td>
+                <td>@Model.Storage?.Type</td>
+            </tr>
+            <tr>
+                <td>Ёмкость накопителя</td>
+                <td>@($"{Model.Storage?.SizeGb} ГБ")</td>
+            </tr>
+            <tr class="table-secondary">
+                <th colspan="2">Графика</th>
+            </tr>
+            <tr>
+                <td>Видеокарта</td>
+                <td>@Model.GPU?.Name</td>
+            </tr>
+            <tr class="table-secondary">
+                <th colspan="2">Аккумулятор</th>
+            </tr>
+            <tr>
+                <td>Запас энергии</td>
+                <td>@($"{Model.BatteryWh} Вт*ч")</td>
+            </tr>
+            <tr class="table-secondary">
+                <th colspan="2">Комплектация</th>
+            </tr>
+            <tr>
+                <td>Операционная система</td>
+                <td>@Model.OS</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
