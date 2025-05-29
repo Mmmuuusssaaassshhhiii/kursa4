@@ -36,13 +36,17 @@
                     </select>
                 </div>
 
+                @{
+                    var priceFrom = Context.Request.Query["priceFrom"].ToString();
+                    var priceTo = Context.Request.Query["priceTo"].ToString();
+                }
                 <div class="mb-3">
                     <label class="form-label">Цена от</label>
-                    <input type="number" class="form-control" name="priceFrom" />
+                    <input type="number" class="form-control" name="priceFrom" value="@priceFrom" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Цена до</label>
-                    <input type="number" class="form-control" name="priceTo" />
+                    <input type="number" class="form-control" name="priceTo" value="@priceTo" />
                 </div>
 
                 <div class="mb-3">
@@ -176,12 +180,27 @@
                     </select>
                 </div>
 
+                @{
+                    var sortBy = Context.Request.Query["sortBy"].ToString();
+                }
+
                 <div class="mb-3">
                     <label class="form-label">Сортировать по</label>
                     <select class="form-select" name="sortBy">
-                        <option value="allLaptops">Все</option>
-                        <option value="priceAsc">Цена ↑</option>
-                        <option value="priceDesc">Цена ↓</option>
+                        @{
+                            var options = new Dictionary<string, string>
+                            {
+                                { "allLaptops", "Все" },
+                                { "priceAsc", "Цена ↑" },
+                                { "priceDesc", "Цена ↓" }
+                            };
+
+                            foreach (var option in options)
+                            {
+                                var selectedAttr = sortBy == option.Key ? "selected" : "";
+                                @:<option value="@option.Key" @selectedAttr>@option.Value</option>
+                            }
+                        }
                     </select>
                 </div>
 
