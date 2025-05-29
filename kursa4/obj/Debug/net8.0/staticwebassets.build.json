@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "A1PjAkRUSdKWfc9Zo1ThWSx+pzAnI7YZoPt+rXfGAoI=",
+  "Hash": "W1KtjBumE0gRpUg60UmEPJBjDaV90WVbEmAi5KqHUVA=",
   "Source": "kursa4",
   "BasePath": "_content/kursa4",
   "Mode": "Default",
@@ -78,6 +78,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\laptops\\20ed8fe0-bcd9-4e7c-ba51-debfa78fb7b0.jpg"
+    },
+    {
+      "Identity": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\images\\laptops\\4f946b31-5469-4450-acea-0b3de3e0899b.webp",
+      "SourceId": "kursa4",
+      "SourceType": "Discovered",
+      "ContentRoot": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\",
+      "BasePath": "_content/kursa4",
+      "RelativePath": "images/laptops/4f946b31-5469-4450-acea-0b3de3e0899b#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cmg9vbi34a",
+      "Integrity": "ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\laptops\\4f946b31-5469-4450-acea-0b3de3e0899b.webp"
     },
     {
       "Identity": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\images\\laptops\\50583a55-958c-4696-8264-e2468528f03f.jpg",
@@ -225,6 +246,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\laptops\\f5ab0a32-944d-4ac1-9cc5-feb28bd6f08b.jpg"
+    },
+    {
+      "Identity": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\746941632974037d1dbe4e6e3bf61394.webp",
+      "SourceId": "kursa4",
+      "SourceType": "Discovered",
+      "ContentRoot": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\",
+      "BasePath": "_content/kursa4",
+      "RelativePath": "img/746941632974037d1dbe4e6e3bf61394#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cmg9vbi34a",
+      "Integrity": "ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\746941632974037d1dbe4e6e3bf61394.webp"
     },
     {
       "Identity": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\laptopAsusRog.jpg",
@@ -1441,6 +1483,88 @@
       ]
     },
     {
+      "Route": "images/laptops/4f946b31-5469-4450-acea-0b3de3e0899b.cmg9vbi34a.webp",
+      "AssetFile": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\images\\laptops\\4f946b31-5469-4450-acea-0b3de3e0899b.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 12:31:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cmg9vbi34a"
+        },
+        {
+          "Name": "label",
+          "Value": "images/laptops/4f946b31-5469-4450-acea-0b3de3e0899b.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA="
+        }
+      ]
+    },
+    {
+      "Route": "images/laptops/4f946b31-5469-4450-acea-0b3de3e0899b.webp",
+      "AssetFile": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\images\\laptops\\4f946b31-5469-4450-acea-0b3de3e0899b.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 12:31:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA="
+        }
+      ]
+    },
+    {
       "Route": "images/laptops/50583a55-958c-4696-8264-e2468528f03f.jpg",
       "AssetFile": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\images\\laptops\\50583a55-958c-4696-8264-e2468528f03f.jpg",
       "Selectors": [],
@@ -2011,6 +2135,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE="
+        }
+      ]
+    },
+    {
+      "Route": "img/746941632974037d1dbe4e6e3bf61394.cmg9vbi34a.webp",
+      "AssetFile": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\746941632974037d1dbe4e6e3bf61394.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 12:30:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cmg9vbi34a"
+        },
+        {
+          "Name": "label",
+          "Value": "img/746941632974037d1dbe4e6e3bf61394.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA="
+        }
+      ]
+    },
+    {
+      "Route": "img/746941632974037d1dbe4e6e3bf61394.webp",
+      "AssetFile": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\746941632974037d1dbe4e6e3bf61394.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11112"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 29 May 2025 12:30:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZCfsar/yVYgdACr+9kEFOl+5litSB4ARtoRGeky2StA="
         }
       ]
     },
