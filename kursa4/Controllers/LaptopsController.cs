@@ -36,60 +36,73 @@ public class LaptopsController : Controller
         _laptopsRam = iLaptopsRam;
         _laptopsStorage = iLaptopsStorage;
     }
+    
+    public IActionResult Filter(string search, string category, string brand, string priceFrom, string priceTo, string cpu, string gpu, string ramType, string ramSize, string storageType, string storageSize, string sortBy)
+{
+    // логика фильтрации ноутбуков
+    var filtered = _context.Laptops
+        .Include(x => x.Brand)
+        .Include(x => x.Category)
+        .Include(x => x.CPU)
+        .Include(x => x.GPU)
+        .Include(x => x.RAM)
+        .Include(x => x.Storage)
+        .AsQueryable();
 
-    public ViewResult ListLaptops(
-    string category,
-    string brand,
-    string CPU,
-    string GPU,
-    string ramType,
-    int? ramSize,
-    string storageType,
-    int? storageSize,
-    decimal? priceFrom,
-    decimal? priceTo,
-    string sortBy)
+    if (!string.IsNullOrWhiteSpace(search))
+        filtered = filtered.Where(x =>
+            (!string.IsNullOrEmpty(x.Model) && x.Model.ToLower().Contains(search.ToLower())) ||
+            (x.Brand != null && !string.IsNullOrEmpty(x.Brand.Name) && x.Brand.Name.ToLower().Contains(search.ToLower()))
+        );
+
+
+
+    if (!string.IsNullOrWhiteSpace(category))
+        filtered = filtered.Where(x => x.Category.Name == category);
+
+    if (!string.IsNullOrWhiteSpace(brand))
+        filtered = filtered.Where(x => x.Brand.Name == brand);
+
+    if (!string.IsNullOrWhiteSpace(priceFrom) && decimal.TryParse(priceFrom, out var from))
+        filtered = filtered.Where(x => x.Price >= from);
+
+    if (!string.IsNullOrWhiteSpace(priceTo) && decimal.TryParse(priceTo, out var to))
+        filtered = filtered.Where(x => x.Price <= to);
+
+    if (!string.IsNullOrWhiteSpace(cpu))
+        filtered = filtered.Where(x => x.CPU.Name == cpu);
+
+    if (!string.IsNullOrWhiteSpace(gpu))
+        filtered = filtered.Where(x => x.GPU.Name == gpu);
+
+    if (!string.IsNullOrWhiteSpace(ramType))
+        filtered = filtered.Where(x => x.RAM.Type == ramType);
+
+    if (!string.IsNullOrWhiteSpace(ramSize) && int.TryParse(ramSize, out var ramSizeGb))
+        filtered = filtered.Where(x => x.RAM.SizeGb == ramSizeGb);
+
+    if (!string.IsNullOrWhiteSpace(storageType))
+        filtered = filtered.Where(x => x.Storage.Type == storageType);
+
+    if (!string.IsNullOrWhiteSpace(storageSize) && int.TryParse(storageSize, out var storageSizeGb))
+        filtered = filtered.Where(x => x.Storage.SizeGb == storageSizeGb);
+
+    if (!string.IsNullOrWhiteSpace(sortBy))
+    {
+        if (sortBy == "priceAsc")
+            filtered = filtered.OrderBy(x => x.Price);
+        else if (sortBy == "priceDesc")
+            filtered = filtered.OrderByDescending(x => x.Price);
+    }
+
+    return PartialView("_LaptopListPartial", filtered.ToList());
+}
+
+    public ViewResult ListLaptops()
 {
     ViewBag.Title = "Каталог";
 
     var laptops = _allLaptops.Laptops.AsQueryable();
-
-    if (!string.IsNullOrEmpty(category))
-        laptops = laptops.Where(l => l.Category.Name == category);
-
-    if (!string.IsNullOrEmpty(brand))
-        laptops = laptops.Where(l => l.Brand.Name == brand);
-
-    if (!string.IsNullOrEmpty(CPU))
-        laptops = laptops.Where(l => l.CPU.Name == CPU);
-
-    if (!string.IsNullOrEmpty(GPU))
-        laptops = laptops.Where(l => l.GPU.Name == GPU);
-
-    if (!string.IsNullOrEmpty(ramType))
-        laptops = laptops.Where(l => l.RAM.Type == ramType);
-
-    if (ramSize.HasValue)
-        laptops = laptops.Where(l => l.RAM.SizeGb == ramSize.Value);
-
-    if (!string.IsNullOrEmpty(storageType))
-        laptops = laptops.Where(l => l.Storage.Type == storageType);
-
-    if (storageSize.HasValue)
-        laptops = laptops.Where(l => l.Storage.SizeGb == storageSize.Value);
-
-    if (priceFrom.HasValue)
-        laptops = laptops.Where(l => l.Price >= priceFrom.Value);
-
-    if (priceTo.HasValue)
-        laptops = laptops.Where(l => l.Price <= priceTo.Value);
-
-    laptops = sortBy switch
-    {
-        "priceAsc" => laptops.OrderBy(l => l.Price),
-        "priceDesc" => laptops.OrderByDescending(l => l.Price),
-        _ => laptops
-    };
 
     var viewModel = new LaptopsListViewModel
     {

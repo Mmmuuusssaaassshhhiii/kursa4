@@ -1,41 +1,51 @@
 @using kursa4.Models
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+
 <div class="row mt-4">
     <!-- Sidebar -->
     <div class="col-md-3">
         <div class="card p-3 shadow-sm">
-            <h5>Фильтры</h5>
-            <form method="get" action="">
+            <form id="filter-form">
+                <div class="mb-3">
+                    
+                    <h5>Поиск</h5>
+                    
+                    <input type="text" class="form-control" name="search" value="@Context.Request.Query["search"]" placeholder="Найти...">
+                </div>
+
+                <h5>Фильтры</h5>
+
+                @* Категория *@
                 <div class="mb-3">
                     <label class="form-label">Категория</label>
                     <select class="form-select" name="category">
                         <option value="">Все</option>
                         @{
                             var selectedCategory = Context.Request.Query["category"].ToString();
-                            foreach (var category in (IEnumerable<kursa4.Models.Category>)ViewBag.Categories)
+                            foreach (var category in (IEnumerable<Category>)ViewBag.Categories)
                             {
-                                var selectedAttr = selectedCategory == category.Name ? "selected" : "";
-                                @:<option value="@category.Name" @selectedAttr>@category.Name</option>
+                                <option value="@category.Name" selected="@(selectedCategory == category.Name ? "selected" : null)">@category.Name</option>
                             }
                         }
                     </select>
                 </div>
 
+                @* Производитель *@
                 <div class="mb-3">
                     <label class="form-label">Производитель</label>
                     <select class="form-select" name="brand">
                         <option value="">Все</option>
                         @{
                             var selectedBrand = Context.Request.Query["brand"].ToString();
-                            foreach (var brand in (IEnumerable<kursa4.Models.Brand>)ViewBag.Brands)
+                            foreach (var brand in (IEnumerable<Brand>)ViewBag.Brands)
                             {
-                                var selectedAttr = selectedBrand == brand.Name ? "selected" : "";
-                                @:<option value="@brand.Name" @selectedAttr>@brand.Name</option>
+                                <option value="@brand.Name" selected="@(selectedBrand == brand.Name ? "selected" : null)">@brand.Name</option>
                             }
                         }
                     </select>
                 </div>
 
+                @* Цены *@
                 @{
                     var priceFrom = Context.Request.Query["priceFrom"].ToString();
                     var priceTo = Context.Request.Query["priceTo"].ToString();
@@ -49,145 +59,105 @@
                     <input type="number" class="form-control" name="priceTo" value="@priceTo" />
                 </div>
 
+                @* CPU *@
                 <div class="mb-3">
                     <label class="form-label">Процессор</label>
                     <select class="form-select" name="CPU">
                         <option value="">Все</option>
                         @{
                             var selectedCpu = Context.Request.Query["cpu"].ToString();
-                            foreach (var cpu in (IEnumerable<kursa4.Models.CPU>)ViewBag.CPUs)
+                            foreach (var cpu in (IEnumerable<CPU>)ViewBag.CPUs)
                             {
-                                var selectedAttr = selectedCpu == cpu.Name ? "selected" : "";
-                                @:<option value="@cpu.Name" @selectedAttr>@cpu.Name</option>
+                                <option value="@cpu.Name" selected="@(selectedCpu == cpu.Name ? "selected" : null)">@cpu.Name</option>
                             }
                         }
                     </select>
                 </div>
 
+                @* GPU *@
                 <div class="mb-3">
                     <label class="form-label">Видеокарта</label>
                     <select class="form-select" name="GPU">
                         <option value="">Все</option>
                         @{
                             var selectedGpu = Context.Request.Query["gpu"].ToString();
-                            foreach (var gpu in (IEnumerable<kursa4.Models.GPU>)ViewBag.GPUs)
+                            foreach (var gpu in (IEnumerable<GPU>)ViewBag.GPUs)
                             {
-                                var selectedAttr = selectedGpu == gpu.Name ? "selected" : "";
-                                @:<option value="@gpu.Name" @selectedAttr>@gpu.Name</option>
+                                <option value="@gpu.Name" selected="@(selectedGpu == gpu.Name ? "selected" : null)">@gpu.Name</option>
                             }
                         }
                     </select>
                 </div>
 
+                @* RAM Type *@
                 <div class="mb-3">
                     <label class="form-label">Тип оперативной памяти</label>
                     <select class="form-select" name="ramType">
                         <option value="">Все</option>
                         @{
                             var selectedRamType = Context.Request.Query["ramType"].ToString();
-                            var ramTypes = ((IEnumerable<kursa4.Models.RAM>)ViewBag.RAMs)
-                                .Select(r => r.Type)
-                                .Distinct();
-
+                            var ramTypes = ((IEnumerable<RAM>)ViewBag.RAMs).Select(r => r.Type).Distinct();
                             foreach (var type in ramTypes)
                             {
-                                if (selectedRamType == type)
-                                {
-                                    <option value="@type" selected>@type</option>
-                                }
-                                else
-                                {
-                                    <option value="@type">@type</option>
-                                }
+                                <option value="@type" selected="@(selectedRamType == type ? "selected" : null)">@type</option>
                             }
                         }
                     </select>
                 </div>
 
+                @* RAM Size *@
                 <div class="mb-3">
                     <label class="form-label">Размер оперативной памяти</label>
                     <select class="form-select" name="ramSize">
                         <option value="">Все</option>
                         @{
                             var selectedRamSize = Context.Request.Query["ramSize"].ToString();
-                            var ramSizes = ((IEnumerable<kursa4.Models.RAM>)ViewBag.RAMs)
-                                .Select(r => r.SizeGb)
-                                .Distinct()
-                                .OrderBy(s => s);
-
+                            var ramSizes = ((IEnumerable<RAM>)ViewBag.RAMs).Select(r => r.SizeGb).Distinct().OrderBy(s => s);
                             foreach (var size in ramSizes)
                             {
-                                if (selectedRamSize == size.ToString())
-                                {
-                                    <option value="@size" selected>@size ГБ</option>
-                                }
-                                else
-                                {
-                                    <option value="@size">@size ГБ</option>
-                                }
+                                <option value="@size" selected="@(selectedRamSize == size.ToString() ? "selected" : null)">@size ГБ</option>
                             }
                         }
                     </select>
                 </div>
 
+                @* Storage Type *@
                 <div class="mb-3">
                     <label class="form-label">Тип хранилища</label>
                     <select class="form-select" name="storageType">
                         <option value="">Все</option>
                         @{
                             var selectedStorageType = Context.Request.Query["storageType"].ToString();
-                            var storageTypes = ((IEnumerable<kursa4.Models.Storage>)ViewBag.Storages)
-                                .Select(s => s.Type)
-                                .Distinct();
+                            var storageTypes = ((IEnumerable<Storage>)ViewBag.Storages).Select(s => s.Type).Distinct();
                             foreach (var type in storageTypes)
                             {
-                                if (selectedStorageType == type)
-                                {
-                                    <option value="@type" selected>@type</option>
-                                }
-                                else
-                                {
-                                    <option value="@type">@type</option>
-                                }
+                                <option value="@type" selected="@(selectedStorageType == type ? "selected" : null)">@type</option>
                             }
                         }
                     </select>
                 </div>
 
+                @* Storage Size *@
                 <div class="mb-3">
                     <label class="form-label">Размер хранилища</label>
                     <select class="form-select" name="storageSize">
                         <option value="">Все</option>
                         @{
                             var selectedStorageSize = Context.Request.Query["storageSize"].ToString();
-                            var storageSizes = ((IEnumerable<kursa4.Models.Storage>)ViewBag.Storages)
-                                .Select(s => s.SizeGb)
-                                .Distinct()
-                                .OrderBy(s => s);
-
+                            var storageSizes = ((IEnumerable<Storage>)ViewBag.Storages).Select(s => s.SizeGb).Distinct().OrderBy(s => s);
                             foreach (var size in storageSizes)
                             {
-                                if (selectedStorageSize == size.ToString())
-                                {
-                                    <option value="@size" selected>@size ГБ</option>
-                                }
-                                else
-                                {
-                                    <option value="@size">@size ГБ</option>
-                                }
+                                <option value="@size" selected="@(selectedStorageSize == size.ToString() ? "selected" : null)">@size ГБ</option>
                             }
                         }
                     </select>
-                </div>
-
-                @{
-                    var sortBy = Context.Request.Query["sortBy"].ToString();
-                }
+                </div>  
 
                 <div class="mb-3">
-                    <label class="form-label">Сортировать по</label>
+                    <h5>Сортировать по</h5>
                     <select class="form-select" name="sortBy">
                         @{
+                            var sortBy = Context.Request.Query["sortBy"].ToString();
                             var options = new Dictionary<string, string>
                             {
                                 { "allLaptops", "Все" },
@@ -197,45 +167,55 @@
 
                             foreach (var option in options)
                             {
-                                var selectedAttr = sortBy == option.Key ? "selected" : "";
-                                @:<option value="@option.Key" @selectedAttr>@option.Value</option>
+                                <option value="@option.Key" selected="@(sortBy == option.Key ? "selected" : null)">@option.Value</option>
                             }
                         }
                     </select>
                 </div>
-
-                <button type="submit" class="btn btn-primary w-100">Применить</button>
+                <div class="d-flex justify-content-between mt-3">
+                    <a href="@Url.Action("ListLaptops", "Laptops")" class="btn btn-secondary">Сбросить фильтры</a>
+                </div>
             </form>
         </div>
     </div>
 
     <!-- Products -->
     <div class="col-md-9">
-        <h2 class="mb-4">Все ноутбуки</h2>
-
-        @foreach (var laptop in Model.allLaptops)
-        {
-            <div class="card mb-3 shadow-sm">
-                <div class="row g-0">
-                    <!-- Изображение -->
-                    <div class="col-md-4">
-                        <img src="@laptop.ImageUrl" class="img-fluid rounded-start" alt="@laptop.Model">
-                    </div>
-
-                    <!-- Описание -->
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">@($"Ноутбук {laptop.Category?.Name} {laptop.Brand?.Name} {laptop.Model}")</h5>
-                            
-                            <p>@($"{laptop.ScreenSize}'' {laptop.Resolution}, {laptop.RefreshRate} Гц, {laptop.CPU?.Name}, {laptop.RAM.Type} {laptop.RAM.SizeGb} ГБ, {laptop.Storage.Type} {laptop.Storage.SizeGb} ГБ, {laptop.GPU?.Name}, {laptop.OS}, аккумулятор {laptop.BatteryWh} Вт*ч")</p>
-                            <p><h5><strong>@laptop.Price.ToString("c")</strong></h5></p>
-                            <a asp-controller="Laptops" asp-action="Details" asp-route-id="@laptop.Id" class="btn btn-outline-primary">
-                                Подробнее
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
+        <h2 class="mb-4">Каталог ноутбуков</h2>
+        <div id="laptop-list">
+            @await Html.PartialAsync("_LaptopListPartial", Model.allLaptops, ViewData)
+        </div>
     </div>
 </div>
+
+@{
+<script>
+    const form = document.getElementById('filter-form');
+    const laptopList = document.getElementById('laptop-list');
+
+    // Функция отправки формы и замены списка
+    const fetchAndRender = () => {
+        const formData = new FormData(form);
+        const queryString = new URLSearchParams(formData).toString();
+
+        fetch(`/Laptops/Filter?${queryString}`)
+            .then(response => response.text())
+            .then(html => {
+                laptopList.innerHTML = html;
+            });
+    };
+
+    // Селекты и input[type=number] — сразу при изменении
+    form.querySelectorAll('select, input[type="number"]').forEach(el => {
+        el.addEventListener('change', fetchAndRender);
+    });
+
+    // Поиск — с debounce
+    const searchInput = form.querySelector('input[name="search"]');
+    let timeout;
+    searchInput.addEventListener('input', () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(fetchAndRender, 400);
+    });
+</script>
+}

@@ -1,0 +1,20 @@
+@model List<kursa4.Models.Laptop>
+
+@foreach (var laptop in Model)
+{
+    <div class="card mb-3 shadow-sm">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="@laptop.ImageUrl" class="img-fluid rounded-start" alt="@laptop.Model">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@($"Ноутбук {laptop.Category?.Name} {laptop.Brand?.Name} {laptop.Model}")</h5>
+                    <p>@($"{laptop.ScreenSize}'' {laptop.Resolution}, {laptop.RefreshRate} Гц, {laptop.CPU?.Name}, {laptop.RAM.Type} {laptop.RAM.SizeGb} ГБ, {laptop.Storage.Type} {laptop.Storage.SizeGb} ГБ, {laptop.GPU?.Name}, {laptop.OS}, аккумулятор {laptop.BatteryWh} Вт*ч")</p>
+                    <h5><strong>@laptop.Price.ToString("c")</strong></h5>
+                    <a asp-controller="Laptops" asp-action="Details" asp-route-id="@laptop.Id" class="btn btn-outline-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
