@@ -1,4 +1,6 @@
+using System.Security.Claims;
 using kursa4.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -115,6 +117,19 @@ namespace kursa4.Controllers
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
             if (user != null)
             {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.FullName),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Role, user.Role)
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, "MyCookieAuth");
+                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+                // Вход (создание cookie)
+                await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
+                
                 HttpContext.Session.SetString("UserEmail", user.Email);
                 HttpContext.Session.SetString("UserName", user.FullName);
                 HttpContext.Session.SetString("UserRole", user.Role);
@@ -122,7 +137,7 @@ namespace kursa4.Controllers
                 if (user.Role == "Admin")
                     return RedirectToAction("Index", "Admin");
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Account");
             }
 
             ViewBag.Error = "Неверный email или пароль";
@@ -132,8 +147,9 @@ namespace kursa4.Controllers
         // Выход
         public IActionResult Logout()
         {
+            HttpContext.SignOutAsync("MyCookieAuth");
             HttpContext.Session.Clear();
-            return RedirectToAction("Login");
+            return RedirectToAction("ListLaptops", "Laptops");
         }
     }
 }

@@ -16,30 +16,62 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a asp-controller="Laptops" asp-action="ListLaptops" class="nav-link px-2 link-secondary">CyberNote</a></li>
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a asp-controller="Admin" asp-action="Index" class="nav-link px-2 link-secondary">CyberNote-admin</a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a asp-controller="Laptops" asp-action="ListLaptops" class="nav-link px-2 link-secondary">CyberNote</a>
+                    </li>
+                }
             </ul>
+
 
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span>@User.Identity.Name</span>
+                    }
+                    else
+                    {
+                        <span>Добро пожаловать! Для начала авторизуйтесь!</span>
+                    }
                 </a>
 
-                <ul class="dropdown-menu text-small">
-                    <li>
-                        <a asp-controller="Account" asp-action="Register" class="dropdown-item">Зарегистрироваться</a>
-                    </li>
-                    <li>
-                        <a asp-controller="Account" asp-action="Login" class="dropdown-item">Войти</a>
-                    </li>
-                    <li>
-                        <a asp-controller="Account" asp-action="Index" class="dropdown-item">Личный кабинет</a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a asp-controller="Account" asp-action="Logout" class="dropdown-item">Выйти</a>
-                    </li>
+                <ul class="dropdown-menu dropdown-menu-end text-small shadow">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>
+                                <a asp-controller="Admin" asp-action="Index" class="dropdown-item">Админ панель</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a asp-controller="Account" asp-action="Index" class="dropdown-item">Личный кабинет</a>
+                            </li>
+                        }
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a asp-controller="Account" asp-action="Logout" class="dropdown-item">Выйти</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a asp-controller="Account" asp-action="Register" class="dropdown-item">Зарегистрироваться</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Account" asp-action="Login" class="dropdown-item">Войти</a>
+                        </li>
+                    }
                 </ul>
             </div>
 
