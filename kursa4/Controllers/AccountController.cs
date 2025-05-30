@@ -87,10 +87,17 @@ namespace kursa4.Controllers
                 return View(model);
             }
 
-            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-            if (existingUser != null)
+            var existingUserByEmail = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (existingUserByEmail != null)
             {
                 ModelState.AddModelError("Email", "Пользователь с таким Email уже существует");
+                return View(model);
+            }
+
+            var existingUserByPhone = await _context.Users.FirstOrDefaultAsync(u => u.PhoneNumber == model.PhoneNumber);
+            if (existingUserByPhone != null)
+            {
+                ModelState.AddModelError("PhoneNumber", "Пользователь с таким номером телефона уже существует");
                 return View(model);
             }
 
