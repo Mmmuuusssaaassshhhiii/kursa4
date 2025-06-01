@@ -1,33 +1,46 @@
 using kursa4.Interfaces;
 using kursa4.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace kursa4.Mocks;
 
 public class UserCartRepository : IUserCart
 {
-    private readonly List<Cart> _carts = new List<Cart>();
-    private int _itemIdCounter = 1;
+    private readonly ApplicationDbContext _context;
+
+    public UserCartRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
 
     public Cart GetCartByUserId(int userId)
     {
-        var cart = _carts.SingleOrDefault(c => c.UserId == userId);
+        var cart = _context.Carts
+            .Include(c => c.CartItems)
+            .FirstOrDefault(c => c.UserId == userId);
+
         if (cart == null)
         {
             cart = new Cart
             {
-                Id = _carts.Count + 1,
                 UserId = userId,
                 CartItems = new List<CartItem>()
             };
-            _carts.Add(cart);
+            _context.Carts.Add(cart);
+            _context.SaveChanges();
         }
+
         return cart;
     }
 
     public void ClearCart(int userId)
     {
         var cart = GetCartByUserId(userId);
-        cart.CartItems.Clear();
+        if (cart != null)
+        {
+            _context.CartItems.RemoveRange(cart.CartItems);
+            _context.SaveChanges();
+        }
     }
 
     public IEnumerable<CartItem> GetCartItems(int userId)
@@ -46,14 +59,16 @@ public class UserCartRepository : IUserCart
         }
         else
         {
-            cart.CartItems.Add(new CartItem
+            var newItem = new CartItem
             {
-                Id = _itemIdCounter++,
                 CartId = cart.Id,
                 LaptopId = laptopId,
-                Quantity = quantity,
-            });
+                Quantity = quantity
+            };
+            _context.CartItems.Add(newItem);
         }
+
+        _context.SaveChanges(); // Не забудь сохранить!
     }
 
     public void UpdateItemQuantity(int userId, int laptopId, int quantity)
@@ -62,17 +77,19 @@ public class UserCartRepository : IUserCart
         var item = cart.CartItems.FirstOrDefault(i => i.LaptopId == laptopId);
         if (item != null)
         {
-            item.Quantity += quantity;
+            item.Quantity = quantity;
+            _context.SaveChanges();
         }
     }
 
     public void RemoveItemFromCart(int userId, int itemId)
     {
         var cart = GetCartByUserId(userId);
-        var item = cart.CartItems.FirstOrDefault(i => i.LaptopId == itemId);
+        var item = cart.CartItems.FirstOrDefault(i => i.Id == itemId);
         if (item != null)
         {
-            cart.CartItems.Remove(item);
+            _context.CartItems.Remove(item);
+            _context.SaveChanges();
         }
     }
 }

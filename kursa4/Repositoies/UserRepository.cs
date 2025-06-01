@@ -5,56 +5,54 @@ namespace kursa4.Mocks;
 
 public class UserRepository : IAllUsers
 {
-    private List<User> _users = new List<User>();
+    private readonly ApplicationDbContext _context;
 
-    public IEnumerable<User> Users => _users;
+    public UserRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    public IEnumerable<User> Users => _context.Users;
 
     public User GetUser(int userId)
     {
-        return _users.FirstOrDefault(u => u.Id == userId);
+        return _context.Users.SingleOrDefault(u => u.Id == userId);
     }
 
     public User GetUserByEmail(string email)
     {
-        return _users.FirstOrDefault(u => u.Email == email);
+        return _context.Users.SingleOrDefault(u => u.Email == email);
     }
 
     public void AddUser(User user)
     {
-        user.Id = _users.Max(u => u.Id) + 1;
-        _users.Add(user);
+        _context.Users.Add(user);
+        _context.SaveChanges();
     }
 
     public void UpdateUser(User user)
     {
-        var existingUser = GetUser(user.Id);
-        if (existingUser != null)
-        {
-            existingUser.Email = user.Email;
-            existingUser.Password = user.Password;
-            existingUser.FullName = user.FullName;
-            existingUser.PhoneNumber = user.PhoneNumber;
-            existingUser.Role = user.Role;
-        }
+        _context.Users.Update(user);
+        _context.SaveChanges();
     }
 
     public void DeleteUser(int userId)
     {
-        var user = GetUser(userId);
+        var user = _context.Users.SingleOrDefault(u => u.Id == userId);
         if (user != null)
         {
-            _users.Remove(user);
+            _context.Users.Remove(user);
+            _context.SaveChanges();
         }
     }
-    
+
     public bool Register(string email, string password, string fullName, string phoneNumber)
     {
-        if (_users.Any(u => u.Email == email))
-            return false; // уже существует
+        if (_context.Users.Any(u => u.Email == email))
+            return false;
 
         var newUser = new User
         {
-            Id = _users.Max(u => u.Id) + 1,
             Email = email,
             Password = password,
             FullName = fullName,
@@ -62,17 +60,18 @@ public class UserRepository : IAllUsers
             Role = "User"
         };
 
-        _users.Add(newUser);
+        _context.Users.Add(newUser);
+        _context.SaveChanges();
         return true;
     }
-    
+
     public User Login(string email, string password)
     {
-        return _users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        return _context.Users.SingleOrDefault(u => u.Email == email && u.Password == password);
     }
-    
+
     public void Logout(int userId)
     {
-
+        // Здесь можно очистить токены, сессии и т.д. если нужно
     }
 }

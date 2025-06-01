@@ -244,13 +244,22 @@
             showModal('Пожалуйста, <a href="/Account/Login">авторизуйтесь</a>, чтобы добавить товар в корзину.');
             return;
         }
-        fetch(`/Cart/AddToCart?id=${id}`, { method: 'POST' })
-            .then(response => {
-                if (response.ok) {
-                    showModal('Товар добавлен в корзину!');
-                }
-            });
+
+        fetch(`/Cart/AddToCart?id=${id}`, {
+            method: 'POST'
+        }).then(response => {
+            if (response.ok) {
+                showModal('Товар добавлен в корзину!');
+            } else {
+                response.text().then(text => {
+                    showModal("Ошибка: " + text);
+                });
+            }
+        }).catch(err => {
+            showModal("Ошибка добавления в корзину: " + err.message);
+        });
     }
+
 
     // Кнопка "Купить сейчас"
     function handleBuy(id) {
