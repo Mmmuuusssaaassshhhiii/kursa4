@@ -27,6 +27,15 @@
                     <li>
                         <a asp-controller="Laptops" asp-action="ListLaptops" class="nav-link px-2 link-secondary">CyberNote</a>
                     </li>
+                    <li>
+                        <a asp-controller="Laptops" asp-action="ListLaptops" class="nav-link px-2 link-secondary">Каталог</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Laptops" asp-action="ListLaptops" class="nav-link px-2 link-secondary">Производители</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Laptops" asp-action="ListLaptops" class="nav-link px-2 link-secondary">Контакты</a>
+                    </li>
                 }
             </ul>
 
@@ -56,6 +65,9 @@
                         {
                             <li>
                                 <a asp-controller="Account" asp-action="Index" class="dropdown-item">Личный кабинет</a>
+                            </li>
+                            <li>
+                                <a asp-controller="Cart" asp-action="Index" class="dropdown-item">Корзина</a>
                             </li>
                         }
                         <li><hr class="dropdown-divider"></li>
