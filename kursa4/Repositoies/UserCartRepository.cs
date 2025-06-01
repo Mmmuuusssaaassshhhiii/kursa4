@@ -17,6 +17,7 @@ public class UserCartRepository : IUserCart
     {
         var cart = _context.Carts
             .Include(c => c.CartItems)
+            .ThenInclude(ci => ci.Laptop) // ← это важно!
             .FirstOrDefault(c => c.UserId == userId);
 
         if (cart == null)
@@ -32,6 +33,7 @@ public class UserCartRepository : IUserCart
 
         return cart;
     }
+
 
     public void ClearCart(int userId)
     {
@@ -71,10 +73,10 @@ public class UserCartRepository : IUserCart
         _context.SaveChanges(); // Не забудь сохранить!
     }
 
-    public void UpdateItemQuantity(int userId, int laptopId, int quantity)
+    public void UpdateItemQuantity(int userId, int itemId, int quantity)
     {
         var cart = GetCartByUserId(userId);
-        var item = cart.CartItems.FirstOrDefault(i => i.LaptopId == laptopId);
+        var item = cart.CartItems.FirstOrDefault(i => i.Id == itemId);
         if (item != null)
         {
             item.Quantity = quantity;
@@ -91,5 +93,10 @@ public class UserCartRepository : IUserCart
             _context.CartItems.Remove(item);
             _context.SaveChanges();
         }
+    }
+    
+    public Laptop GetLaptopById(int laptopId)
+    {
+        return _context.Laptops.FirstOrDefault(l => l.Id == laptopId);
     }
 }

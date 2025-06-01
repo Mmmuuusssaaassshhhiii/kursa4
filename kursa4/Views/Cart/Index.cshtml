@@ -1,0 +1,111 @@
+@model List<kursa4.Models.CartItem>
+@{
+    ViewData["Title"] = "Корзина";
+    decimal totalPrice = 0;
+}
+
+<h2>Корзина</h2>
+
+@if (!Model.Any())
+{
+    <p>Ваша корзина пуста.</p>
+}
+else
+{
+    <form method="post" asp-action="UpdateCart">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Ноутбук</th>
+                <th>Количество</th>
+                <th>Цена за шт.</th>
+                <th>Итого</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                var subtotal = item.Quantity * item.Laptop?.Price ?? 0;
+                totalPrice += subtotal;
+
+                <tr>
+                    <td>
+                        <a asp-controller="Laptops" asp-action="Details" asp-route-id="@item.LaptopId">
+                            @item.Laptop?.Model
+                        </a>
+                    </td>
+                    <td>
+                        <input type="number" name="Quantities[@i]" value="@item.Quantity" min="1" class="form-control" />
+                        <input type="hidden" name="ItemIds[@i]" value="@item.Id" />
+                    </td>
+                    <td>@(item.Laptop?.Price.ToString("C"))</td>
+                    <td>@subtotal.ToString("C")</td>
+                    <td>
+                        <button type="button"
+                                class="btn btn-danger btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#confirmDeleteModal"
+                                data-item-id="@item.Id"
+                                data-laptop-name="@item.Laptop?.Model">
+                            Удалить
+                        </button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between">
+            <h4>Общая сумма: @totalPrice.ToString("C")</h4>
+        </div>
+    </form>
+    
+}
+
+<!-- Модальное окно -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Подтверждение удаления</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить <strong id="laptopName"></strong> из корзины?
+            </div>
+            <div class="modal-footer">
+                <form method="post" id="deleteForm">
+                    <input type="hidden" name="itemId" id="itemIdInput" />
+                    <button type="submit" class="btn btn-danger">Да</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    <script>
+        const modal = document.getElementById('confirmDeleteModal');
+        modal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const itemId = button.getAttribute('data-item-id');
+            const laptopName = button.getAttribute('data-laptop-name');
+
+            document.getElementById('itemIdInput').value = itemId;
+            document.getElementById('laptopName').textContent = laptopName;
+
+            const form = document.getElementById('deleteForm');
+            form.action = '@Url.Action("RemoveItem", "Cart")';
+        });
+
+        document.querySelectorAll('input[type="number"][name^="Quantities"]').forEach(function (input) {
+            input.addEventListener('change', function () {
+                input.closest('form').submit();
+            });
+        });
+    </script>
+}
+

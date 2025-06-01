@@ -13,4 +13,5 @@ public interface IUserCart
     void AddItemToCart(int userId, int laptopId, int quantity);
     void UpdateItemQuantity(int userId, int itemId, int newQuantity);
     void RemoveItemFromCart(int userId, int itemId);
+    Laptop GetLaptopById(int laptopId);
 }

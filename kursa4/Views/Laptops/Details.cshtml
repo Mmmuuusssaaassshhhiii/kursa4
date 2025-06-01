@@ -249,7 +249,7 @@
             method: 'POST'
         }).then(response => {
             if (response.ok) {
-                showModal('Товар добавлен в корзину!');
+                showModal('Товар добавлен в <a href="/Cart/Index">корзину!</a>');
             } else {
                 response.text().then(text => {
                     showModal("Ошибка: " + text);

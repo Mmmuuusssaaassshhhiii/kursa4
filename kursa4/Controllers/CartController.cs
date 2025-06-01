@@ -24,7 +24,7 @@ public class CartController : Controller
         if (string.IsNullOrEmpty(email))
         {
             Console.WriteLine("[DEBUG] Email пустой — пользователь неавторизован");
-            return Unauthorized(); // Лучше чем редирект для JS
+            return Unauthorized();
         }
 
         var user = _userRepo.GetUserByEmail(email);
@@ -48,7 +48,45 @@ public class CartController : Controller
         var user = _userRepo.GetUserByEmail(email);
         if (user == null) return RedirectToAction("Login", "Account");
 
-        var items = _cartRepo.GetCartItems(user.Id).ToList();
-        return View(items); // Представление см. ниже
+        // Загружаем CartItems с ноутбуками
+        var items = _cartRepo.GetCartItems(user.Id)
+            .Select(ci =>
+            {
+                ci.Laptop = _cartRepo.GetLaptopById(ci.LaptopId); // добавь этот метод в IUserCart, если нужно
+                return ci;
+            }).ToList();
+
+        return View(items);
+    }
+    
+    [HttpPost]
+    public IActionResult UpdateCart(int[] ItemIds, int[] Quantities)
+    {
+        var email = HttpContext.Session.GetString("UserEmail");
+        if (string.IsNullOrEmpty(email)) return RedirectToAction("Login", "Account");
+
+        var user = _userRepo.GetUserByEmail(email);
+        if (user == null) return RedirectToAction("Login", "Account");
+
+        for (int i = 0; i < ItemIds.Length; i++)
+        {
+            _cartRepo.UpdateItemQuantity(user.Id, ItemIds[i], Quantities[i]);
+        }
+
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public IActionResult RemoveItem(int itemId)
+    {
+        var email = HttpContext.Session.GetString("UserEmail");
+        if (string.IsNullOrEmpty(email)) return RedirectToAction("Login", "Account");
+
+        var user = _userRepo.GetUserByEmail(email);
+        if (user == null) return RedirectToAction("Login", "Account");
+
+        _cartRepo.RemoveItemFromCart(user.Id, itemId);
+
+        return RedirectToAction("Index"); // ✔️ редирект обратно на корзину
     }
 }
