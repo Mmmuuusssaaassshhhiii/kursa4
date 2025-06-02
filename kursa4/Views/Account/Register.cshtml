@@ -19,7 +19,13 @@
     </div>
 
     <div class="form-floating mb-2">
-        <input asp-for="PhoneNumber" class="form-control" id="phoneInput" placeholder="+375(11)111-11-11" required />
+        <input asp-for="PhoneNumber"
+               class="form-control"
+               id="phoneInput"
+               placeholder="+375(XX)XXX-XX-XX"
+               pattern="^\+375\(\d{2}\)\d{3}-\d{2}-\d{2}$"
+               title="Введите номер в формате: +375(29)123-45-67"
+               required />
         <label asp-for="PhoneNumber">Номер телефона</label>
         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
@@ -42,3 +48,44 @@
 
     <button class="btn btn-primary w-100 py-2" type="submit">Зарегистрироваться</button>
 </form>
+
+<script>
+    const phoneInput = document.getElementById('phoneInput');
+
+    phoneInput.addEventListener('input', function (e) {
+        let input = phoneInput.value.replace(/\D/g, ''); // убираем все нецифры
+
+        if (input.startsWith('375')) {
+            input = input.slice(3); // удалим первую 375, т.к. она будет в шаблоне
+        }
+
+        // Обрезаем до нужной длины
+        input = input.substring(0, 9); // XX XXX XX XX → 9 цифр после 375
+
+        let formatted = '+375';
+
+        if (input.length > 0) {
+            formatted += '(' + input.substring(0, 2);
+        }
+        if (input.length >= 2) {
+            formatted += ')';
+        }
+        if (input.length >= 5) {
+            formatted += input.substring(2, 5) + '-' + input.substring(5, 7);
+        } else if (input.length > 2) {
+            formatted += input.substring(2);
+        }
+        if (input.length >= 7) {
+            formatted += '-' + input.substring(7, 9);
+        }
+
+        phoneInput.value = formatted;
+    });
+
+    phoneInput.addEventListener('keypress', function (e) {
+        // блокируем всё, кроме цифр
+        if (!/[0-9]/.test(e.key)) {
+            e.preventDefault();
+        }
+    });
+</script>
