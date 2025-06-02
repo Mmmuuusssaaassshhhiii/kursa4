@@ -89,4 +89,17 @@ public class CartController : Controller
 
         return RedirectToAction("Index"); // ✔️ редирект обратно на корзину
     }
+    
+    [HttpPost]
+    public IActionResult ClearCart()
+    {
+        var email = HttpContext.Session.GetString("UserEmail");
+        if (string.IsNullOrEmpty(email)) return Unauthorized();
+
+        var user = _userRepo.GetUserByEmail(email);
+        if (user == null) return NotFound();
+
+        _cartRepo.ClearCart(user.Id);
+        return RedirectToAction("Index");
+    }
 }

@@ -57,8 +57,20 @@ else
             </tbody>
         </table>
 
+        <button type="button"
+                class="btn btn-outline-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#clearCartModal">
+            Очистить корзину
+        </button>
+
         <div class="d-flex justify-content-between">
             <h4>Общая сумма: @totalPrice.ToString("C")</h4>
+            <div class="d-flex gap-2">
+                <form method="post" asp-action="Checkout">
+                    <button type="submit" class="btn btn-success">Оформить заказ</button>
+                </form>
+            </div>
         </div>
     </form>
     
@@ -78,6 +90,26 @@ else
             <div class="modal-footer">
                 <form method="post" id="deleteForm">
                     <input type="hidden" name="itemId" id="itemIdInput" />
+                    <button type="submit" class="btn btn-danger">Да</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="clearCartModal" tabindex="-1" aria-labelledby="clearCartModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Подтверждение очистки корзины</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите <strong>удалить все товары</strong> из корзины?
+            </div>
+            <div class="modal-footer">
+                <form method="post" asp-action="ClearCart">
                     <button type="submit" class="btn btn-danger">Да</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Нет</button>
                 </form>
