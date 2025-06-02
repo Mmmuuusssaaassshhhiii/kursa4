@@ -33,7 +33,81 @@
 <form method="post" asp-controller="Orders" asp-action="Confirm">
     <div class="mb-3">
         <label for="deliveryDate" class="form-label">Желаемая дата доставки</label>
-        <input type="date" name="deliveryDate" class="form-control" />
+        <input type="date" name="deliveryDate" class="form-control" required />
     </div>
+
+    <div class="mb-3">
+        <label for="cardNumber" class="form-label">Номер карты</label>
+        <input type="text" class="form-control" id="cardNumber" name="CardNumber"
+               inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456"
+               pattern="^\d{4} \d{4} \d{4} \d{4}$" required />
+        <div class="invalid-feedback">Введите 16 цифр, формат: 1234 5678 9012 3456</div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <label for="expiry" class="form-label">Срок действия (MM/YY)</label>
+            <input type="text" class="form-control" id="expiry" name="Expiry"
+                   inputmode="numeric" maxlength="5" placeholder="MM/YY"
+                   pattern="^(0[1-9]|1[0-2])\/\d{2}$" required />
+            <div class="invalid-feedback">Введите срок действия в формате MM/YY</div>
+        </div>
+        <div class="col">
+            <label for="cvv" class="form-label">CVV</label>
+            <input type="text" class="form-control" id="cvv" name="CVV"
+                   inputmode="numeric" maxlength="3" pattern="^\d{3}$" required />
+            <div class="invalid-feedback">Введите 3-значный CVV</div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="cardHolder" class="form-label">Имя держателя (латиницей)</label>
+        <input type="text" class="form-control" id="cardHolder" name="CardHolder"
+               style="text-transform: uppercase;" pattern="^[A-Z]+ [A-Z]+$"
+               placeholder="IVAN IVANOV" required />
+        <div class="invalid-feedback">Введите имя и фамилию латиницей, например: IVAN IVANOV</div>
+    </div>
+
     <button type="submit" class="btn btn-success">Подтвердить заказ</button>
 </form>
+
+<script>
+    // Автоформатирование номера карты
+    document.getElementById('cardNumber').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, '').substring(0, 16);
+        value = value.replace(/(.{4})/g, '$1 ').trim();
+        e.target.value = value;
+    });
+
+    // Автоформатирование срока действия
+    document.getElementById('expiry').addEventListener('input', function (e) {
+        let value = e.target.value.replace(/\D/g, '').substring(0, 4);
+        if (value.length >= 3) value = value.replace(/(\d{2})(\d{1,2})/, '$1/$2');
+        e.target.value = value;
+    });
+
+    // CVV — ограничение на 3 цифры
+    document.getElementById('cvv').addEventListener('input', function (e) {
+        e.target.value = e.target.value.replace(/\D/g, '').substring(0, 3);
+    });
+
+    // Имя держателя — автокапс
+    document.getElementById('cardHolder').addEventListener('input', function (e) {
+        e.target.value = e.target.value.toUpperCase();
+    });
+
+    // Bootstrap валидация
+    (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>

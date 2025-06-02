@@ -241,3 +241,10 @@ A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\win\lib\net7.0\Mi
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+A:\универ\kursa4\kursa4\kursa4\bin\Debug\net8.0\Twilio.dll

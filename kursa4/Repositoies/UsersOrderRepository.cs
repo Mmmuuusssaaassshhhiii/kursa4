@@ -33,7 +33,7 @@ public class UsersOrderRepository : IUsersOrders
     public void CreateOrder(Order order)
     {
         order.OrderDate = DateTime.Now;
-        order.Status = "Pending";
+        order.Status = "В ожидании";
 
         _context.Orders.Add(order);
         _context.SaveChanges();
@@ -42,7 +42,7 @@ public class UsersOrderRepository : IUsersOrders
         {
             OrderId = order.Id,
             Amount = order.OrderItems.Sum(o => o.Price * o.Quantity),
-            Status = "Pending",
+            Status = "В ожидании",
             PaymentDate = DateTime.Now
         };
 
@@ -67,7 +67,7 @@ public class UsersOrderRepository : IUsersOrders
         var order = _context.Orders.Find(orderId);
         if (order != null)
         {
-            order.Status = "Cancelled";
+            order.Status = "Отменён";
             _context.SaveChanges();
         }
     }
@@ -99,7 +99,7 @@ public class UsersOrderRepository : IUsersOrders
         if (payment != null)
         {
             payment.Amount = amount;
-            payment.Status = "paid";
+            payment.Status = "Оплачено";
             payment.PaymentDate = DateTime.Now;
             _context.SaveChanges();
         }
