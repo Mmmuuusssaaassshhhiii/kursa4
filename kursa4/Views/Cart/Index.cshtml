@@ -67,12 +67,14 @@ else
         <div class="d-flex justify-content-between">
             <h4>Общая сумма: @totalPrice.ToString("C")</h4>
             <div class="d-flex gap-2">
-                <form method="post" asp-action="Checkout">
-                    <button type="submit" class="btn btn-success">Оформить заказ</button>
-                </form>
             </div>
         </div>
     </form>
+    
+    <form method="get" asp-controller="Orders" asp-action="Create">
+        <button type="submit" class="btn btn-success">Оформить заказ</button>
+    </form>
+
     
 }
 

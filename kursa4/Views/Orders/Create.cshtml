@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Оформление заказа";
+    var cartItems = ViewBag.CartItems as List<kursa4.Models.CartItem>;
+    var total = (decimal)ViewBag.Total;
+}
+
+<h2>Оформление заказа</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Ноутбук</th>
+        <th>Количество</th>
+        <th>Цена</th>
+        <th>Итого</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in cartItems)
+    {
+        <tr>
+            <td>@item.Laptop?.Model</td>
+            <td>@item.Quantity</td>
+            <td>@item.Laptop?.Price.ToString("C")</td>
+            <td>@string.Format("{0:C}", (item.Laptop?.Price ?? 0) * item.Quantity)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h4>Общая сумма: @total.ToString("C")</h4>
+
+<form method="post" asp-controller="Orders" asp-action="Confirm">
+    <div class="mb-3">
+        <label for="deliveryDate" class="form-label">Желаемая дата доставки</label>
+        <input type="date" name="deliveryDate" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Подтвердить заказ</button>
+</form>

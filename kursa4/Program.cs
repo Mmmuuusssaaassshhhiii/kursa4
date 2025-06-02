@@ -1,6 +1,7 @@
 using kursa4;
 using kursa4.Interfaces;
 using kursa4.Mocks;
+using kursa4.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -102,4 +102,12 @@ public class CartController : Controller
         _cartRepo.ClearCart(user.Id);
         return RedirectToAction("Index");
     }
+    
+    [HttpPost]
+    public IActionResult Checkout()
+    {
+        // Тут ты можешь создать заказ и очистить корзину, например
+        // или редирект на страницу оформления
+        return RedirectToAction("Create", "Orders");
+    }
 }

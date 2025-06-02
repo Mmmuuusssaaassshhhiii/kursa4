@@ -1,86 +1,96 @@
 using kursa4.Interfaces;
 using kursa4.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace kursa4.Mocks;
+namespace kursa4.Repositories;
 
 public class UsersOrderRepository : IUsersOrders
 {
-    private readonly List<Order> _orders = new();
-    private readonly List<OrderItem> _orderItems = new();
-    private readonly List<Payment> _payments = new();
-    private int _orderIdCounter = 1;
-    private int _orderItemIdCounter = 1;
-    private int _paymentIdCounter = 1;
+    private readonly ApplicationDbContext _context;
+
+    public UsersOrderRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
 
     public Order GetOrderById(int orderId)
     {
-        return _orders.FirstOrDefault(o => o.Id == orderId);
+        return _context.Orders
+            .Include(o => o.OrderItems)
+            .Include(o => o.Payment)
+            .FirstOrDefault(o => o.Id == orderId);
     }
 
     public IEnumerable<Order> GetOrderByUserId(int userId)
     {
-        return _orders.Where(o => o.UserId == userId);
+        return _context.Orders
+            .Include(o => o.OrderItems)
+            .Include(o => o.Payment)
+            .Where(o => o.UserId == userId)
+            .ToList();
     }
 
     public void CreateOrder(Order order)
     {
-        order.Id = _orderIdCounter++;
         order.OrderDate = DateTime.Now;
         order.Status = "Pending";
 
-        foreach (var item in order.OrderItems)
-        {
-            item.Id = _orderItemIdCounter++;
-            item.OrderId = order.Id;
-            _orderItems.Add(item);
-        }
-        
-        _orders.Add(order);
+        _context.Orders.Add(order);
+        _context.SaveChanges();
 
         var payment = new Payment
         {
-            Id = _paymentIdCounter++,
             OrderId = order.Id,
             Amount = order.OrderItems.Sum(o => o.Price * o.Quantity),
             Status = "Pending",
             PaymentDate = DateTime.Now
         };
-        _payments.Add(payment);
-        
+
+        _context.Payments.Add(payment);
+        _context.SaveChanges();
+
         order.Payment = payment;
     }
 
     public void UpdateOrderStatus(int orderId, string status)
     {
-        var order = GetOrderById(orderId);
+        var order = _context.Orders.Find(orderId);
         if (order != null)
         {
             order.Status = status;
+            _context.SaveChanges();
         }
     }
 
     public void CancelOrder(int orderId)
     {
-        var order = GetOrderById(orderId);
+        var order = _context.Orders.Find(orderId);
         if (order != null)
         {
             order.Status = "Cancelled";
+            _context.SaveChanges();
         }
     }
-    
+
     public IEnumerable<OrderItem> GetOrderItems(int orderId)
     {
-        return _orderItems.Where(oi => oi.OrderId == orderId);
+        return _context.OrderItems
+            .Where(oi => oi.OrderId == orderId)
+            .Include(oi => oi.Laptop)
+            .ToList();
     }
 
     public OrderItem GetOrderItemById(int orderItemId)
     {
-        return _orderItems.FirstOrDefault(oi => oi.Id == orderItemId);
+        return _context.OrderItems
+            .Include(oi => oi.Laptop)
+            .FirstOrDefault(oi => oi.Id == orderItemId);
     }
 
     public Payment GetPaymentByOrderId(int orderId)
     {
-        return _payments.FirstOrDefault(p => p.OrderId == orderId);
+        return _context.Payments
+            .FirstOrDefault(p => p.OrderId == orderId);
     }
 
     public void ProcessPayment(int orderId, decimal amount)
@@ -91,6 +101,7 @@ public class UsersOrderRepository : IUsersOrders
             payment.Amount = amount;
             payment.Status = "paid";
             payment.PaymentDate = DateTime.Now;
+            _context.SaveChanges();
         }
     }
 
@@ -100,6 +111,7 @@ public class UsersOrderRepository : IUsersOrders
         if (payment != null)
         {
             payment.Status = status;
+            _context.SaveChanges();
         }
     }
 }
