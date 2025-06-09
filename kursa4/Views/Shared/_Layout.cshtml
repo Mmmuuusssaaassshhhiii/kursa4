@@ -69,6 +69,9 @@
                             <li>
                                 <a asp-controller="Cart" asp-action="Index" class="dropdown-item">Корзина</a>
                             </li>
+                            <li>
+                                <a asp-controller="Account" asp-action="Orders" class="dropdown-item">Мои заказы</a>
+                            </li>
                         }
                         <li><hr class="dropdown-divider"></li>
                         <li>
@@ -99,8 +102,10 @@
 <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a asp-controller="Laptops" asp-action="ListLaptops" class="nav-link px-2 text-body-secondary">Каталог</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О разработчике</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О приложении</a></li>
+        <li class="nav-item"><a class="nav-link px-2 text-body-secondary">О разработчике</a></li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Info" asp-action="AboutApp">О приложении</a>
+        </li>
     </ul>
     <p class="text-center text-body-secondary">© 2025 CyberNote, Made by Musashi</p>
 </footer>

@@ -16,7 +16,8 @@ else
         <thead>
         <tr>
             <th>Номер заказа</th>
-            <th>Дата</th>
+            <th>Дата оформления заказа</th>
+            <th>Доставка на ПВЗ</th>
             <th>Статус</th>
         </tr>
         </thead>
@@ -26,6 +27,7 @@ else
             <tr>
                 <td>@order.Id</td>
                 <td>@order.OrderDate.ToShortDateString()</td>
+                <td>@order.DeliveryDate?.ToShortDateString()</td>
                 <td>@order.Status</td>
             </tr>
         }
