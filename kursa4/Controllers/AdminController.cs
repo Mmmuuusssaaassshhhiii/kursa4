@@ -74,8 +74,9 @@ public class AdminController : Controller
     {
         var orders = await _context.Orders
             .Include(o => o.User)
+            .Include(o => o.Payment) // обязательно!
             .ToListAsync();
-        
+
         return View(orders);
     }
 

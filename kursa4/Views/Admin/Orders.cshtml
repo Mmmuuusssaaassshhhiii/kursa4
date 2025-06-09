@@ -24,7 +24,7 @@
             <td>@order.User?.FullName (@order.User?.Email)</td>
             <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
             <td>@order.Status</td>
-            <td>@($"{order.Payment:C}")</td>
+            <td>@(order.Payment != null ? $"{order.Payment.Amount:C}" : "—")</td>
         </tr>
     }
     </tbody>

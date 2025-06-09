@@ -36,7 +36,7 @@ public class UsersOrderRepository : IUsersOrders
         order.Status = "В ожидании";
 
         _context.Orders.Add(order);
-        _context.SaveChanges();
+        _context.SaveChanges(); // сохраняем, чтобы получить order.Id
 
         var payment = new Payment
         {
@@ -48,8 +48,6 @@ public class UsersOrderRepository : IUsersOrders
 
         _context.Payments.Add(payment);
         _context.SaveChanges();
-
-        order.Payment = payment;
     }
 
     public void UpdateOrderStatus(int orderId, string status)

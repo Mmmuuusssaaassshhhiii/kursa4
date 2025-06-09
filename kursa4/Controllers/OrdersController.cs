@@ -1,4 +1,4 @@
-using kursa4.Interfaces;
+    using kursa4.Interfaces;
 using kursa4.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,10 +47,19 @@ public class OrdersController : Controller
     public IActionResult Confirm(string deliveryDate)
     {
         var email = HttpContext.Session.GetString("UserEmail");
-        if (string.IsNullOrEmpty(email)) return RedirectToAction("Login", "Account");
+        if (string.IsNullOrEmpty(email))
+            return RedirectToAction("Login", "Account");
 
         var user = _userRepo.GetUserByEmail(email);
-        var cartItems = _cartRepo.GetCartItems(user.Id);
+        if (user == null)
+            return RedirectToAction("Login", "Account");
+
+        var cartItems = _cartRepo.GetCartItems(user.Id)
+            .Select(ci =>
+            {
+                ci.Laptop = _cartRepo.GetLaptopById(ci.LaptopId);
+                return ci;
+            }).ToList();
 
         if (!cartItems.Any())
         {
@@ -70,7 +79,7 @@ public class OrdersController : Controller
             }).ToList()
         };
 
-        _orderRepo.CreateOrder(order);
+        _orderRepo.CreateOrder(order); // репозиторий сам создаст Payment
         _cartRepo.ClearCart(user.Id);
 
         return RedirectToAction("Success");
