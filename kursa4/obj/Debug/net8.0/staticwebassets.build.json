@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W1KtjBumE0gRpUg60UmEPJBjDaV90WVbEmAi5KqHUVA=",
+  "Hash": "cxYYcoglU2+MvfMPgBtjzNhV/bmY2PNshneEIg2syEE=",
   "Source": "kursa4",
   "BasePath": "_content/kursa4",
   "Mode": "Default",
@@ -288,6 +288,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\laptopAsusRog.jpg"
+    },
+    {
+      "Identity": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\ruzhanskiy-dvorec.webp",
+      "SourceId": "kursa4",
+      "SourceType": "Discovered",
+      "ContentRoot": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\",
+      "BasePath": "_content/kursa4",
+      "RelativePath": "img/ruzhanskiy-dvorec#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1jh28mgkwb",
+      "Integrity": "PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\ruzhanskiy-dvorec.webp"
     },
     {
       "Identity": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
@@ -2299,6 +2320,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-KN6k9jj6eFexp1FfXV4JVXTchsGnm0Hg2jyl6HMj+TE="
+        }
+      ]
+    },
+    {
+      "Route": "img/ruzhanskiy-dvorec.1jh28mgkwb.webp",
+      "AssetFile": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\ruzhanskiy-dvorec.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "284494"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Jun 2025 12:55:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1jh28mgkwb"
+        },
+        {
+          "Name": "label",
+          "Value": "img/ruzhanskiy-dvorec.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc="
+        }
+      ]
+    },
+    {
+      "Route": "img/ruzhanskiy-dvorec.webp",
+      "AssetFile": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\ruzhanskiy-dvorec.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "284494"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Jun 2025 12:55:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc="
         }
       ]
     },

@@ -53,6 +53,10 @@
       "PackagePath": "staticwebassets\\img\\laptopAsusRog.jpg"
     },
     {
+      "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\img\\ruzhanskiy-dvorec.webp",
+      "PackagePath": "staticwebassets\\img\\ruzhanskiy-dvorec.webp"
+    },
+    {
       "Id": "A:\\универ\\kursa4\\kursa4\\kursa4\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },

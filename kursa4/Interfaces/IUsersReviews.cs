@@ -14,6 +14,7 @@ public interface IUsersReviews
     void AddReview(Review review);
     void UpdateReview(Review review);
     void DeleteReview(int reviewId);
+    IEnumerable<Review> GetAllReviews();
     
     //average rating
     double GetAverageRatingForLaptop(int laptopId);

@@ -1,0 +1,31 @@
+@model IEnumerable<kursa4.Models.Review>
+
+@{
+    ViewData["Title"] = "Отзывы пользователей";
+}
+
+<h2>Отзывы пользователей</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+        <th>Пользователь</th>
+        <th>Ноутбук</th>
+        <th>Оценка</th>
+        <th>Текст отзыва</th>
+        <th>Дата</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var review in Model)
+    {
+        <tr>
+            <td>@review.User?.FullName</td>
+            <td>@review.Laptop?.Model</td>
+            <td>@review.Rating</td>
+            <td>@review.Content</td>
+            <td>@review.CreatedAt.ToString("dd.MM.yyyy HH:mm")</td>
+        </tr>
+    }
+    </tbody>
+</table>

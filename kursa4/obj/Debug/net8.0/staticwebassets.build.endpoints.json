@@ -1069,6 +1069,88 @@
       ]
     },
     {
+      "Route": "img/ruzhanskiy-dvorec.1jh28mgkwb.webp",
+      "AssetFile": "img/ruzhanskiy-dvorec.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "284494"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Jun 2025 12:55:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1jh28mgkwb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc="
+        },
+        {
+          "Name": "label",
+          "Value": "img/ruzhanskiy-dvorec.webp"
+        }
+      ]
+    },
+    {
+      "Route": "img/ruzhanskiy-dvorec.webp",
+      "AssetFile": "img/ruzhanskiy-dvorec.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "284494"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Jun 2025 12:55:49 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PeXSZdhHk/NzbHxiBcOqfuXAeAXeGGGTY0meXaUR8Dc="
+        }
+      ]
+    },
+    {
       "Route": "lib/bootstrap/LICENSE",
       "AssetFile": "lib/bootstrap/LICENSE",
       "Selectors": [],

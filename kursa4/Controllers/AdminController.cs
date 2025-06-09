@@ -22,12 +22,24 @@ public class AdminController : Controller
         var users = await _context.Users.ToListAsync();
         var orders = await _context.Orders.ToListAsync();
         var laptops = await _context.Laptops.ToListAsync();
+        var reviews = await _context.Reviews.ToListAsync();
         
         ViewBag.UserCount = users.Count;
         ViewBag.OrderCount = orders.Count;
         ViewBag.LaptopCount = laptops.Count;
+        ViewBag.FeedbackCount = reviews.Count;
 
         return View();
+    }
+    
+    public async Task<IActionResult> Review()
+    {
+        var reviews = await _context.Reviews
+            .Include(r => r.User)
+            .Include(r => r.Laptop)
+            .ToListAsync();
+    
+        return View(reviews);
     }
 
     public async Task<IActionResult> Laptops()

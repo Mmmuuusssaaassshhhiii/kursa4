@@ -83,4 +83,9 @@ public class ReviewRepository : IUsersReviews
         if (reviews.Count == 0) return 0.0;
         return Math.Round(reviews.Average(r => r.Rating), 2);
     }
+
+    public IEnumerable<Review> GetAllReviews()
+    {
+        return _reviews;
+    }
 }
